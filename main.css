@@ -52,4 +52,8 @@
 {
     line-height: 1.5 !important;
 }
-
+a, a:hover, a:focus, a:active
+{
+    text-decoration: none;
+    color: inherit;
+}
