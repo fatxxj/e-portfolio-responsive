@@ -27,7 +27,8 @@
 {
     padding: 0.40rem;
     background-color: #fff;
-    border: 4px outset darkgray;
+    border: 4px  darkgray;
+    border-style:  inset outset inset  outset  ;
     border-radius: 0.25rem;
     max-width: 100%;
     height: auto;
@@ -38,6 +39,17 @@
     border-style:  outset  outset inset inset ;
 }
 
+#portfolio_underline
+{
+    border-bottom: black;
+}
 
+.lh-base {
+    line-height: 1.7 !important;
+}
 
+.br
+{
+    line-height: 1.5 !important;
+}
 
