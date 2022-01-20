@@ -1,0 +1,38 @@
+.custom-emri-foto /* responsive  background */
+{
+    height: 25vw;
+    background-color: lightgray;
+
+}
+
+.emri /* Responsive name */
+{
+    font-size: 5vw;
+    font-style: italic;
+}
+.emri.display-3 /* Responsive portfolio */
+{
+    font-size: 2.5vw;
+    font-style: italic;
+}
+
+.foto /* responsive foto */
+{
+    width: 20vw;
+    height: 20vw;
+
+}
+
+#custom-photo
+{
+    padding: 0.40rem;
+    background-color: #fff;
+    border: 4px outset darkgray;
+    border-radius: 0.25rem;
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+
