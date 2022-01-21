@@ -1,0 +1,9 @@
+.row, .display-6
+{
+    text-shadow:1px 1px 3px white, 1px 1px 5px white;
+}
+#white-bg
+{
+    background-color: rgba(255 ,255,255,0.7);
+
+}
