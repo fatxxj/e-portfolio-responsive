@@ -1,6 +1,7 @@
 #tit, #par, #par1
 {
     text-shadow:1.3px 1.3px 1.3px white, 1.3px 1.3px 1.3px black;
+    background-color: rgba(255 ,255,255,0.5);
 }
 #white-bg
 {
@@ -11,7 +12,6 @@ a, a:hover, a:focus, a:active
 {
     text-decoration: none;
     color: inherit;
-    background-color: white;
 }
 .bold-bg
 {
