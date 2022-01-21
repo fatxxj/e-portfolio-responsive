@@ -1,15 +1,12 @@
-#tit, #par
+#tit, #par, #par1
 {
-    text-shadow:1px 1px 1px white, 1px 1px 1px black;
+    text-shadow:1.3px 1.3px 1.3px white, 1.3px 1.3px 1.3px black;
 }
 #white-bg
 {
-    background-color: rgba(255 ,255,255,0.8);
+    background-color: rgba(255 ,255,255,0.87);
 
 }
-.accordion-button
-{
-    text-align: center;
-}
+
 
 
