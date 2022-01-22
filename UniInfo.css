@@ -18,4 +18,11 @@ a, a:hover, a:focus, a:active
     background-color: white;
 }
 
+nav
+{
+    margin-top: 1vw;
+    margin-left: 5vw;
+    padding-top: 1vw;
+}
+
 
