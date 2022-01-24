@@ -1,0 +1,26 @@
+.display-6 {
+    font-size: calc(1rem + 1vw);
+    font-weight: 300;
+    line-height: 1.2;
+}
+
+.p-2>a
+{
+    color: inherit;
+    text-decoration: inherit;
+
+}
+.p-2 a:hover,.p-2 a:visited
+{
+    color: darkslategray;
+    text-decoration: underline;
+}
+.back a, .back a:visited
+{
+    text-decoration: none;
+    color: black;
+}
+.back a:hover
+{
+    color: white;
+}
