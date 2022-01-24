@@ -11320,13 +11320,11 @@ h1, .h1 {
 
 p.lead {
     font-size: 1.15rem;
-    font-weight: 400;
+    font-weight: 330;
 }
 
 .subheading {
-    font-family: "Saira Extra Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 300;
     font-size: 1.5rem;
 }
 
@@ -11335,10 +11333,14 @@ p.lead {
     padding-right: 1rem;
 }
 #sideNav .navbar-nav .nav-item .nav-link {
-    font-weight: 800;
     letter-spacing: 0.05rem;
     text-transform: uppercase;
+    font-size: calc(0.4rem + 1vw);
+    font-weight: 300;
+    line-height: 1.2;
 }
+
+
 #sideNav .navbar-toggler:focus {
     outline-color: #d48a6e;
 }
@@ -11433,3 +11435,19 @@ section.resume-section .resume-section-content {
         padding-bottom: 5rem;
     }
 }
+
+.emriNav {
+    font-size: calc(0.9rem + 1.5vw);
+    font-weight: 300;
+    line-height: 1.2;
+}
+#about .display-1
+{
+    letter-spacing: 0.15rem;
+
+}
+.subheading>a
+{
+    font-size: 1.24rem;
+}
+
