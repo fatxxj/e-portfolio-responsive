@@ -7737,6 +7737,8 @@ textarea.form-control-lg {
     color: rgba(var(--bs-secondary-rgb), var(--bs-text-opacity)) !important;
 }
 
+
+
 .text-success {
     --bs-text-opacity: 1;
     color: rgba(var(--bs-success-rgb), var(--bs-text-opacity)) !important;
@@ -11461,3 +11463,8 @@ section.resume-section .resume-section-content {
     font-size: 1.24rem;
 }
 
+.dates
+{
+    color: black;
+    font-weight: bold;
+}
