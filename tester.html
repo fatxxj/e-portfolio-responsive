@@ -34,7 +34,8 @@
                 source: tagoviZaKoristenje
             })
             $("#show-after").hide()
-
+            $("#show-after1").hide()
+            $("#searchbutton1").hide()
             $("#searchbutton").click(function () {
                 if ($("#searchbox").val() === "") {
                     alert("You must input a name")
@@ -43,6 +44,9 @@
                     console.log(movie_name)
                     processData(movie_name)
                     $("#show-after").show()
+                    $("#show-after1").show()
+                    $("#searchbutton1").show()
+
                 }
             })
 
@@ -66,6 +70,22 @@
                 })
             }
 
+            $( "#searchbox" ).keydown(function( event ) {
+                if ( event.which == 13 ) {
+                    if ($("#searchbox").val() === "") {
+                        alert("You must input a name")
+                    } else {
+                        movie_name = $("#searchbox").val()
+                        console.log(movie_name)
+                        processData(movie_name)
+                        $("#show-after").show()
+                        $("#show-after1").show()
+                        $("#searchbutton1").show()
+
+                    }
+                }
+            })
+
             $("#back").click(function () {
                 $("#detalen").hide();
                 $("#base").show()
@@ -79,11 +99,10 @@
             })
 
 
-
         })//za kraj
     </script>
     <style>
-        #searchbutton {
+        #searchbutton, #searchbutton1 {
             display: inline-block;
             font-weight: 400;
             line-height: 0.7;
@@ -103,51 +122,86 @@
             color: #212529;
             border-color: #212529;
         }
-        #searchbutton:hover {
+
+        #searchbutton:hover, #searchbutton1:hover {
             color: #fff;
             background-color: #6c757d;
             border-color: #6c757d;
         }
+
+        .display-6.custom {
+            font-size: 24px;
+        }
+
+        .display-6 {
+            font-size: 32px;
+        }
+
+        li:hover
+        {
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+
     </style>
 </head>
 <body>
 
 <div class="container p-2">
 
-
+<div class="row">
     <div class="p-2 flex-grow-1  justify-content-around">
         <div id="base">
-            <h3 class="display-6" >
-                Find a movie <svg title="Type a movie title, hit search, it will be displayed on a list, you can search multiple titles, they will be builded into a list and click any list item to get detailed information for the movie" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-            </svg>
+            <h3 class="display-6">
+                Find a movie
+                <svg title="Type a movie title, hit search, it will be displayed on a list, you can search multiple titles, they will be builded into a list and click any list item to get detailed information for the movie"
+                     xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-info-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                </svg>
             </h3>
             <input type="text" id="searchbox">
             <p class="m-1"></p>
 
-            <button class="btn btn-outline-secondary " id="searchbutton" >Search</button><hr>
+            <button class="btn btn-outline-secondary " id="searchbutton">Search</button>
+            <hr>
             <div class="p-2">
 
             </div>
             <div id="2013">
-                <ul id="film2013" class="selectable">
+                <ol id="film2013" class="selectable">
 
-                </ul>
+                </ol>
             </div>
 
             <hr id="show-after">
 
         </div>
+        <button onclick="window.print()" class="btn btn-outline-secondary float-end" id="searchbutton1">Print List
+        </button>
+
     </div>
+    <br>
+    <hr id="show-after1">
     <div id="detalen">
-        <p>Title: <span id="naslovDetalen"></span></p>
-        <p>Reziser: <span id="reziser"> </span></p>
-        <p>Actors: <span id="akteri"></span></p>
-        <p>IMDB rating: <span id="imdb"></span></p>
-        <p>Poster<br> <img id="img" src=""></p>
-        <button class="btn btn-outline-secondary" id="back">Go back to search</button>
+        <p class="display-6">Title: <span class="display-6 custom" id="naslovDetalen"></span></p>
+        <hr>
+        <p class="display-6">Reziser: <span class="display-6 custom" id="reziser"> </span></p>
+        <hr>
+        <p class="display-6">Actors: <span class="display-6 custom" id="akteri"></span></p>
+        <hr>
+        <p class="display-6">IMDB rating: <span class="display-6 custom" id="imdb"></span></p>
+        <hr>
+        <p class="display-6"><img id="img" src=""></p>
+
+        <button class="btn btn-outline-secondary " id="back">Go back to search</button>
+        <hr>
     </div>
+</div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
             integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
