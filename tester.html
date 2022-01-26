@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="jquery/jquery/jquery-ui.css">
+    <script src="jquery/jquery/jquery.js"></script>
+    <script src="jquery/jquery/jquery-ui.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#detalen").hide();
+            $("#base").show();
+            var tagoviZaKoristenje = [
+                "Titanic", "Focus", "The good doctor"
+            ];
+            $(".selectable").tooltip({
+                position: {
+                    my: "center bottom",
+                    at: "right top"
+                }
+            })
+
+            $(".bi-info-circle").tooltip({
+                position: {
+                    my: "center bottom",
+                    at: "center right"
+                }
+            })
+
+            $("#searchbox").autocomplete({
+                source: tagoviZaKoristenje
+            })
+            $("#show-after").hide()
+
+            $("#searchbutton").click(function () {
+                if ($("#searchbox").val() === "") {
+                    alert("You must input a name")
+                } else {
+                    movie_name = $("#searchbox").val()
+                    console.log(movie_name)
+                    processData(movie_name)
+                    $("#show-after").show()
+                }
+            })
+
+            function processData() {
+                $.ajax({
+                    url: "http://www.omdbapi.com/?t=" + movie_name + "&apikey=f11223a",
+                    dataType: "json",
+                    success: function (data) {
+                        console.log("success")
+                        godinaNaIzdavanje = data.Year;
+
+                        $("#film2013").append("<li id='prvo' class='p-2' title='" + data.imdbRating + "'>" + data.Title + "</li>")
+                        $("#naslovDetalen").html(data.Title)
+                        $("#reziser").html(data.Director)
+                        $("#akteri").html(data.Actors)
+                        $("#imdb").html(data.imdbRating)
+                        $("#img").attr("src", data.Poster)
+
+
+                    }
+                })
+            }
+
+            $("#back").click(function () {
+                $("#detalen").hide();
+                $("#base").show()
+            })
+            $(document).on("click", "li", function () {
+                movie_name = $(this).html();
+                processData(movie_name);
+                $(this).remove();
+                $("#base").hide();
+                $("#detalen").show()
+            })
+
+
+
+        })//za kraj
+    </script>
+    <style>
+        #searchbutton {
+            display: inline-block;
+            font-weight: 400;
+            line-height: 0.7;
+            color: #212529;
+            text-align: center;
+            text-decoration: none;
+            vertical-align: middle;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+            background-color: transparent;
+            padding: 0.55rem;
+            border-radius: 2px;
+            font-size: 1rem;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            color: #212529;
+            border-color: #212529;
+        }
+        #searchbutton:hover {
+            color: #fff;
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container p-2">
+
+
+    <div class="p-2 flex-grow-1  justify-content-around">
+        <div id="base">
+            <h3 class="display-6" >
+                Find a movie <svg title="Type a movie title, hit search, it will be displayed on a list, you can search multiple titles, they will be builded into a list and click any list item to get detailed information for the movie" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+            </svg>
+            </h3>
+            <input type="text" id="searchbox">
+            <p class="m-1"></p>
+
+            <button class="btn btn-outline-secondary " id="searchbutton" >Search</button><hr>
+            <div class="p-2">
+
+            </div>
+            <div id="2013">
+                <ul id="film2013" class="selectable">
+
+                </ul>
+            </div>
+
+            <hr id="show-after">
+
+        </div>
+    </div>
+    <div id="detalen">
+        <p>Title: <span id="naslovDetalen"></span></p>
+        <p>Reziser: <span id="reziser"> </span></p>
+        <p>Actors: <span id="akteri"></span></p>
+        <p>IMDB rating: <span id="imdb"></span></p>
+        <p>Poster<br> <img id="img" src=""></p>
+        <button class="btn btn-outline-secondary" id="back">Go back to search</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+            integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+            integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+            crossorigin="anonymous"></script>
+</div>
+</body>
+</html>
