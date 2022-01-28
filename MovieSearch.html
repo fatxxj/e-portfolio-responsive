@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Movie engine</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
     <link rel="stylesheet" href="jquery/jquery/jquery-ui.css">
     <script src="jquery/jquery/jquery.js"></script>
@@ -34,10 +34,13 @@
 
             $("#searchbox").autocomplete({
                 source: tagoviZaKoristenje
+
             })
+
             $("#show-after").hide()
             $("#show-after1").hide()
             $("#printbutton1").hide()
+
             $("#searchbutton").click(function () {
                 if ($("#searchbox").val() === "") {
                     alert("You must input a name")
@@ -207,7 +210,8 @@
                 <hr>
                 <p class="display-6"><img id="img" src=""></p>
 
-                <button onclick="window.print()" class="btn btn-outline-secondary float-end" id="printbuttonOnDetailed">Print
+                <button onclick="window.print()" class="btn btn-outline-secondary float-end" id="printbuttonOnDetailed">
+                    Print
                     List
                 </button>
                 <button class="btn btn-outline-secondary " id="back">Go back to search</button>
