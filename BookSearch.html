@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Book Engine</title>
+    <!-- Done by Fat Halimi  https://fatxxj.github.io/e-portfolio-responsive -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
     <link rel="stylesheet" href="jquery/jquery/jquery-ui.css">
@@ -19,14 +21,21 @@
             $("#show-after").hide()
             $("#add").click(function ()
             {
-                getData($("#isbn").val())
-                $("#show-after").show()
-                $("#printbutton1").show()
+                if ($("#isbn").val() === "") {
+                    alert("You must input a name")
+                } else {
+
+                    getData($("#isbn").val())
+                    $("#show-after").show()
+                    $("#show-after1").show()
+                    $("#printbutton1").show()
+
+                }
 
 
             })
             $("#isbn").keydown(function (event) {
-                if (event.which == 13) {
+                if (event.which === 13) {
                     if ($("#isbn").val() === "") {
                         alert("You must input a name")
                     } else {
@@ -41,7 +50,7 @@
             })
             function getData(book_isbn)
             {
-                if(book_isbn.length==10 || book_isbn.length==13)
+                if(book_isbn.length===10 || book_isbn.length===13)
                 {
 
                     $.ajax({
@@ -82,6 +91,8 @@
                     at: "center right"
                 }
             })
+
+
 
 
 
