@@ -8,4 +8,19 @@ a:hover
 {
     color: white;
     text-decoration: underline;
+    font-weight: bolder;
+}
+.btn-outline-secondary.custom_li
+{
+    border: none;
+    font-size: 18px;
+
+}
+.btn-outline-secondary:hover.custom_li
+{
+    background-color: whitesmoke;
+    color: black;
+    text-decoration: underline;
+    font-size: 19px;
+
 }
