@@ -100,8 +100,11 @@
                     location.reload()
 
                 })
+                $("#totalInteres").val(( parseInt($("#TotalreturnAmtWithInterest").val()) - parseInt($("#totalLoan").val())).toFixed(2) +" Euro")
 
             })
+
+
 
             $("#gjuha").change(function (){
                 if($(this).val()==='1'){
@@ -209,6 +212,14 @@
         <div class="row text-center">
             <div class="col-">
                 <div class="display-6">Rezultati i kalkulimit</div>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-sm-7 col-md-7 col-lg-9 col-12"><br>
+                <p class="display-6 custom">Sasia totale e interesit bankar</p>
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-3 col-12  "><br>
+                <input type="text" placeholder="" id="totalInteres">
             </div>
         </div>
         <div class="row ">
