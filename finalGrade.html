@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--suppress JSJQueryEfficiency -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,31 +22,83 @@
 
             var flag = 0;
             $("#result").hide()
+            isDisabled = 0;
+            isDisabledFinalExam = 0;
+
+
+            $('#firstExamPoints').on('input', function () {
+
+                if ($("#firstExamPoints").val() !== "") {
+                    $("#finalExamPoints, #finalExamPercentage ").prop('disabled', true);
+                    isDisabledFinalExam = 1 //gets disabled when points entered for first exam
+                    console.log(isDisabledFinalExam)
+
+                }
+                if ($("#firstExamPoints").val() === "") {
+                    $("#finalExamPoints, #finalExamPercentage  ").prop('disabled', false);
+                    isDisabledFinalExam = 0 //undo disable when first exam is empty
+                    console.log(isDisabledFinalExam)
+
+                }
+            });
+
+            $('#finalExamPoints').on('input', function () {
+
+                if ($("#finalExamPoints").val() !== "") {
+                    $("#firstExamPoints, #firstExamPercentage, #secondExamPoints, #secondExamPercentage ").prop('disabled', true);
+                    isDisabled = 1 //gets disabled exam field when final exam points are enterred
+                    console.log(isDisabled)
+
+                }
+                if ($("#finalExamPoints").val() === "") {
+                    $("#firstExamPoints, #firstExamPercentage ").prop('disabled', false);
+                    isDisabled = 0 //first exam second exam gets enabled when final exam points are emptyu
+                    console.log(isDisabled)
+
+                }
+            });
 
 
             $("#calculate").click(function () {
-                if ($("#firstExamPoints").val() === "") {
-                    alert("Loan amount is required")
 
-                } else
-                    flag++;
+                thrown=0
+                if(isDisabled===0)
+                {
+                    if(flag<2) {
 
-                if ($("#months").val() == "" && $("#maxExamPoints").val() === "")
-                    alert(" Number of installments either by month either by year is required")
-                else flag++;
+                        if ($("#firstExamPoints").val() === "" || $("#secondExamPoints").val() === "") {
+                            alert("First exam points and second exam points are required")
+                            thrown=1
 
-                if ($("#percentage").val() === "")
-                    alert("percentage is required")
-                else flag++;
-                if ($("#percentage").val() < 0) {
-                    alert("There is no such thing as negative percentage percentage")
-                    flag--
+                        } else if ($("#firstExamPoints").val() !== "" || $("#secondExamPoints").val() !== "" )
+                            flag+=2;
+                    }
                 }
 
 
-                if (flag == 3) {
+                if(isDisabledFinalExam===0)
+                {
+                    if($("#finalExamPoints").val()==="" && thrown===0)
+                    {
+                        alert("Final exam points are required")
+
+                    }
+                    else
+                        flag+=2;
+                }
+
+
+
+
+
+
+
+                success="success"
+                if (flag === 2) {
                     //$("#result").show()
                     $("#hrID").show()
+                    console.log(success)
+
                     $(this).css({
                         borderStyle: "inset",
                         cursor: "wait"
@@ -61,31 +114,53 @@
 
 
                 } else {
-                    $("#firstExamPoints").val("")
-                    $(".totalInstallments").val("")
-                    $("#percentage").val("")
+                    location.reload()
 
                 }
 
-                firstExamPoints=parseFloat($("#firstExamPoints").val())
-                secondExamPoints=parseFloat($("#secondExamPoints").val())
-                finalExamPoints=parseFloat($("#finalExamPoints").val())
-                maxPoints=parseInt($("#maxExamPoints").val())
-                percentage=parseInt($("#percentage").val())
+                firstExamPoints = parseFloat($("#firstExamPoints").val())
+                secondExamPoints = parseFloat($("#secondExamPoints").val())
+                finalExamPoints = parseFloat($("#finalExamPoints").val())
+                finalExamPercentage = parseFloat($("#finalExamPercentage").val()) / 100
+                firstExamPercentage = parseFloat($("#firstExamPercentage").val()) / 100
+                secondExamPercentage = parseFloat($("#secondExamPercentage").val()) / 100
+                assigmentsPoints = parseFloat($("#assigmentsPoints").val())
+                assigmentsPercentage = parseFloat($("#assigmentsPercentage").val()) / 100
+                presencePoints = parseFloat($("#presencePoints").val())
+                presencePercentage = parseFloat($("#presencePercentage").val()) / 100
+                bonusPoints = parseFloat($("#bonusPoints").val())
+                bonusPercentage = parseFloat($("#bonusPercentage").val()) / 100
 
-                percentage=percentage/100;
+
+                $("#firstExamPercentageShow").append("<b>10 percent</b>")
+                $("#secondExamPercentageShow").append("<b>10 percent</b>")
+                $("#finalExamPercentageShow").append("<b>10 percent</b>")
+                $("#assigmentsPercentageShow").append("<b>10 percent</b>")
+                $("#presencePercentageShow").append("<b>10 percent</b>")
+                $("#bonusPercentageShow").append("<b>10 percent</b>")
+                $("#TotalPercentageShow").append("<b>10 percent</b>")
+
+                // console.log(firstExamPoints)
+                // console.log(firstExamPercentage)
+                // console.log(secondExamPoints)
+                // console.log(secondExamPercentage)
+                // console.log(finalExamPoints)
+                // console.log(finalExamPercentage)
+                // console.log(assigmentsPoints)
+                // console.log(assigmentsPercentage)
+                // console.log(presencePoints)
+                // console.log(presencePercentage)
+                // console.log(bonusPoints)
+                // console.log(bonusPercentage)
 
 
-                $("#pointsAsPercentage").val(((firstExamPoints / maxPoints)*100).toFixed(2) +" %")
-                test=$("#percentageOnFinal").val((firstExamPoints*percentage).toFixed(2)+" %")
-                console.log(test)
+                //  $("input").prop('disabled', false);
 
 
                 $("#calculateAgain").click(function () {
                     location.reload()
 
                 })
-
 
 
             })
@@ -96,9 +171,8 @@
                 }
             })
 
-            $("#calculateFinal").click(function ()
-            {
-                window.open("finalGrade.html")
+            $("#calculateFinal").click(function () {
+                window.open("GradeCalculator.html")
             })
 
 
@@ -123,13 +197,25 @@
 
         @media only screen and (max-width: 599px) {
             input, #percentageOnFinal, #returnAmt {
-               width: 200%;
+                width: 200%;
             }
 
             .display-6.custom {
                 text-align: center;
-                font-size: 20px;
+                font-size: 18px;
             }
+        }
+
+        @media only screen and (max-width: 377px) {
+            input, #percentageOnFinal, #returnAmt {
+                width: 200%;
+            }
+
+            .display-6.custom {
+                text-align: center;
+                font-size: 18px;
+            }
+
         }
 
 
@@ -159,21 +245,22 @@
 
     <div class="row text-center">
         <div class="col-sm-12 col-md-12 col-lg-12 col-12">
-            <div class="display-6">Grade calculator</div>
+            <div class="display-6">Final grade calculator</div>
         </div>
     </div>
     <br>
     <div class="row  ">
         <div class="col-sm-7 col-md-7 col-lg-9 col-6"><br>
-            <p class="display-6 custom">First exam points you have</p>
+            <p class="display-6 custom">Total points on first exam</p>
             <div class="col-sm-5 col-md-5 col-lg-3 col-6  ">
                 <input type="number" min="0" placeholder="Insert number" id="firstExamPoints">
             </div>
         </div>
+
         <div class="col-sm-7 col-md-7 col-lg-9 col-6"><br>
-            <p class="display-6 custom">Second exam points you have</p>
+            <p class="display-6 custom">First exam percentage on grade</p>
             <div class="col-sm-5 col-md-5 col-lg-3 col-6  ">
-                <input type="number" min="0" placeholder="Insert number" id="secondExamPoints">
+                <input type="number" min="0" placeholder="%" id="firstExamPercentage">
             </div>
         </div>
 
@@ -181,36 +268,89 @@
     </div>
     <div class="row  ">
 
-    </div>
-    <div class="row  ">
-        <div class="col-sm-7 col-md-7 col-lg-9 col-12"><br>
-            <p class="display-6 custom">Final exam points you have</p>
+        <div class="col-sm-7 col-md-7 col-lg-9 col-6"><br>
+            <p class="display-6 custom">Total points on second exam</p>
+            <div class="col-sm-5 col-md-5 col-lg-3 col-6  ">
+                <input type="number" min="0" placeholder="Insert number" id="secondExamPoints">
+            </div>
         </div>
-        <div class="col-sm-5 col-md-5 col-lg-3 col-12  "><br>
-            <input type="number" min="0" placeholder="Insert number" id="finalExamPoints">
+        <div class="col-sm-7 col-md-7 col-lg-9 col-6"><br>
+            <p class="display-6 custom">Second exam percentage on grade</p>
+            <div class="col-sm-5 col-md-5 col-lg-3 col-6  ">
+                <input type="number" min="0" placeholder="%" id="secondExamPercentage">
+            </div>
         </div>
-    </div>
-    <div class="row justify-content-around">
-        <div class="col-sm-7 col-md-7 col-lg-9 col-12 "><br>
-            <p class="display-6 custom">Insert MAX exam points</p>
-        </div>
-        <div class="col-sm-5 col-md-5 col-lg-3 col-12 "><br>
-            <input type="number" min="0" placeholder="Insert number" class="totalInstallments" id="maxExamPoints">
 
+    </div>
+    <br>
+    <div class="row  ">
+        <div class="col-sm-7 col-md-7 col-lg-9 col-6">
+            <p class="display-6 custom">Total points on final exam</p>
+            <div class="col-sm-5 col-md-5 col-lg-3 col-6  ">
+                <input type="number" min="0" placeholder="Insert number" id="finalExamPoints">
+            </div>
+        </div>
+        <div class="col-sm-7 col-md-7 col-lg-9 col-6 ">
+            <p class="display-6 custom">Final exam percentage on grade</p>
+            <div class="col-sm-5 col-md-5 col-lg-3 col-6 ">
+                <input type="number" min="0" placeholder="%" class="totalInstallments" id="finalExamPercentage">
+            </div>
         </div>
     </div>
-    <div class="row ">
-        <div class="col-sm-7 col-md-7 col-lg-9 col-12"><br>
-            <p class="display-6 custom">Exam weight on grade (percentage)</p>
+    <br>
+    <div class="row  ">
+        <div class="col-sm-7 col-md-7 col-lg-9 col-6">
+            <p class="display-6 custom">Total points from assigments</p>
+            <div class="col-sm-5 col-md-5 col-lg-3 col-6  ">
+                <input type="number" min="0" placeholder="Insert number" id="assigmentsPoints">
+            </div>
         </div>
-        <div class="col-sm-5 col-md-5 col-lg-3 col-12  "><br>
-            <input type="number" placeholder="%" id="percentage" min="0">
+        <div class="col-sm-7 col-md-7 col-lg-9 col-6 ">
+            <p class="display-6 custom"> Percentage from assigments on grade</p>
+            <div class="col-sm-5 col-md-5 col-lg-3 col-6 ">
+                <input type="number" min="0" placeholder="%" class="totalInstallments" id="assigmentsPercentage">
+            </div>
         </div>
     </div>
+
+    <br>
+    <div class="row  ">
+        <div class="col-sm-7 col-md-7 col-lg-9 col-6">
+            <p class="display-6 custom">Total points for presence</p>
+            <div class="col-sm-5 col-md-5 col-lg-3 col-6  ">
+                <input type="number" min="0" placeholder="Insert number" id="presencePoints">
+            </div>
+        </div>
+        <div class="col-sm-7 col-md-7 col-lg-9 col-6 ">
+            <p class="display-6 custom"> Percentage from presence on grade </p>
+            <div class="col-sm-5 col-md-5 col-lg-3 col-6 ">
+                <input type="number" min="0" placeholder="%" class="totalInstallments" id="presencePercentage">
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row  ">
+        <div class="col-sm-7 col-md-7 col-lg-9 col-6">
+            <p class="display-6 custom">Total bonus points accumulated</p>
+            <div class="col-sm-5 col-md-5 col-lg-3 col-6  ">
+                <input type="number" min="0" placeholder="Insert number" id="bonusPoints">
+            </div>
+        </div>
+        <div class="col-sm-7 col-md-7 col-lg-9 col-6 ">
+            <p class="display-6 custom"> Percentage from bonus on grade </p>
+            <div class="col-sm-5 col-md-5 col-lg-3 col-6 ">
+                <input type="number" min="0" placeholder="%" class="totalInstallments" id="bonusPercentage">
+            </div>
+        </div>
+    </div>
+
+
     <div class="row justify-content-between text-center">
-        <div class="col-sm-12 col-md-12 col-lg-12 col-12 "><br>
-            <button class="btn btn-outline-secondary" id="calculate">Calculate</button>
-            <button class="btn btn-outline-secondary" id="calculateFinal">Calculate final grade</button>
+        <div class="col-sm-12 col-md-12 col-lg-12 col-6 "><br>
+            <button class="btn btn-outline-secondary" id="calculate">Calculate your grade</button>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-12 col-6 "><br>
+            <button class="btn btn-outline-secondary" id="calculateFinal">Exam grade calculator</button>
         </div>
 
     </div>
@@ -219,29 +359,81 @@
         <hr id="hrID">
         <div class="row text-center">
             <div class="col-">
-                <div class="display-6">Calculation result</div>
+                <div class="display-6">Calculation result<br></div>
+                <br>
             </div>
         </div>
-        <div class="row ">
-            <div class="col-sm-7 col-md-7 col-lg-9 col-12"><br>
-                <p class="display-6 custom">Exam points as percentage</p>
+
+        <div class="row">
+            <div class="col-sm-7 col-md-7 col-lg-9 col-8">
+                <p class="display-6 custom">Total percentage from first exam is: </p>
             </div>
-            <div class="col-sm-5 col-md-5 col-lg-3 col-12  "><br>
-                <input type="text" placeholder="" id="pointsAsPercentage">
+            <div class="col-sm-7 col-md-7 col-lg-9 col-3 offset-1 align-self-center">
+                <span id="firstExamPercentageShow"></span>
             </div>
+            <hr>
         </div>
-        <div class="row ">
-            <div class="col-sm-7 col-md-7 col-lg-9 col-12"><br>
-                <p class="display-6 custom">Exam percentage on final grade</p>
+        <div class="row">
+            <div class="col-sm-7 col-md-7 col-lg-9 col-8">
+                <p class="display-6 custom">Total percentage from second exam is: </p>
             </div>
-            <div class="col-sm-5 col-md-5 col-lg-3 col-12  "><br>
-                <input type="text" placeholder="" id="percentageOnFinal">
+            <div class="col-sm-7 col-md-7 col-lg-9 col-3 offset-1 align-self-center">
+                <span id="secondExamPercentageShow"></span>
             </div>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="col-sm-7 col-md-7 col-lg-9 col-8">
+                <p class="display-6 custom">Total percentage final exam: </p>
+            </div>
+            <div class="col-sm-7 col-md-7 col-lg-9 col-3 offset-1 align-self-center">
+                <span id="finalExamPercentageShow"></span>
+            </div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-7 col-md-7 col-lg-9 col-8">
+                <p class="display-6 custom">Total percentage from assigments is: </p>
+            </div>
+            <div class="col-sm-7 col-md-7 col-lg-9 col-3 offset-1 align-self-center">
+                <span id="assigmentsPercentageShow"></span>
+            </div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-7 col-md-7 col-lg-9 col-8">
+                <p class="display-6 custom">Total percentage from presence is: </p>
+            </div>
+            <div class="col-sm-7 col-md-7 col-lg-9 col-3 offset-1 align-self-center">
+                <span id="presencePercentageShow"></span>
+            </div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-7 col-md-7 col-lg-9 col-8">
+                <p class="display-6 custom">Total percentage from bonus is: </p>
+            </div>
+            <div class="col-sm-7 col-md-7 col-lg-9 col-3 offset-1 align-self-center">
+                <span id="bonusPercentageShow" class="text-center"></span>
+            </div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-7 col-md-7 col-lg-9 col-8">
+                <p class="display-6 custom"><b>Total percentage for the subject is: </b></p>
+            </div>
+            <div class="col-sm-7 col-md-7 col-lg-9 col-3 offset-1 align-self-center">
+                <span id="TotalPercentageShow" class="text-end"><b></b></span>
+            </div>
+            <hr>
         </div>
 
 
         <div class="row">
-
             <div class="col-sm-7 col-md-7 col-lg-7 col-6"><br>
                 <button class="btn btn-outline-secondary " id="calculateAgain">Calculate again
                 </button>
@@ -251,12 +443,9 @@
                     report
                 </button>
                 <br><br>
-
             </div>
 
-
         </div>
-
 
     </div>
 
