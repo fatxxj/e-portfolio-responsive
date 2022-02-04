@@ -34,13 +34,69 @@
                     console.log(isDisabledFinalExam)
 
                 }
+
                 if ($("#firstExamPoints").val() === "") {
                     $("#finalExamPoints, #finalExamPercentage  ").prop('disabled', false);
                     isDisabledFinalExam = 0 //undo disable when first exam is empty
                     console.log(isDisabledFinalExam)
 
                 }
+
             });
+
+            $('#firstExamPercentage').on('input', function () {
+
+                if ($("#firstExamPercentage").val() !== "") {
+                    $("#finalExamPoints, #finalExamPercentage ").prop('disabled', true);
+                    isDisabledFinalExam = 1 //gets disabled when points entered for first exam
+                    console.log(isDisabledFinalExam)
+
+                }
+
+                if ($("#firstExamPercentage").val() === "") {
+                    $("#finalExamPoints, #finalExamPercentage  ").prop('disabled', false);
+                    isDisabledFinalExam = 0 //undo disable when first exam is empty
+                    console.log(isDisabledFinalExam)
+
+                }
+
+            });
+            $('#secondExamPoints').on('input', function () {
+
+                if ($("#secondExamPoints").val() !== "") {
+                    $("#finalExamPoints, #finalExamPercentage ").prop('disabled', true);
+                    isDisabledFinalExam = 1 //gets disabled when points entered for first exam
+                    console.log(isDisabledFinalExam)
+
+                }
+
+                if ($("#secondExamPoints").val() === "") {
+                    $("#finalExamPoints, #finalExamPercentage  ").prop('disabled', false);
+                    isDisabledFinalExam = 0 //undo disable when first exam is empty
+                    console.log(isDisabledFinalExam)
+
+                }
+
+            });
+
+            $('#secondExamPercentage').on('input', function () {
+
+                if ($("#secondExamPercentage").val() !== "") {
+                    $("#finalExamPoints, #finalExamPercentage ").prop('disabled', true);
+                    isDisabledFinalExam = 1 //gets disabled when points entered for first exam
+                    console.log(isDisabledFinalExam)
+
+                }
+
+                if ($("#secondExamPercentage").val() === "") {
+                    $("#finalExamPoints, #finalExamPercentage  ").prop('disabled', false);
+                    isDisabledFinalExam = 0 //undo disable when first exam is empty
+                    console.log(isDisabledFinalExam)
+
+                }
+
+            });
+
 
             $('#finalExamPoints').on('input', function () {
 
@@ -51,7 +107,22 @@
 
                 }
                 if ($("#finalExamPoints").val() === "") {
-                    $("#firstExamPoints, #firstExamPercentage ").prop('disabled', false);
+                    $("#firstExamPoints, #firstExamPercentage,#secondExamPoints, #secondExamPercentage ").prop('disabled', false);
+                    isDisabled = 0 //first exam second exam gets enabled when final exam points are emptyu
+                    console.log(isDisabled)
+
+                }
+            });
+            $('#finalExamPercentage').on('input', function () {
+
+                if ($("#finalExamPercentage").val() !== "") {
+                    $("#firstExamPoints, #firstExamPercentage, #secondExamPoints, #secondExamPercentage ").prop('disabled', true);
+                    isDisabled = 1 //gets disabled exam field when final exam points are enterred
+                    console.log(isDisabled)
+
+                }
+                if ($("#finalExamPercentage").val() === "") {
+                    $("#firstExamPoints, #firstExamPercentage,  #secondExamPoints, #secondExamPercentage ").prop('disabled', false);
                     isDisabled = 0 //first exam second exam gets enabled when final exam points are emptyu
                     console.log(isDisabled)
 
@@ -66,11 +137,15 @@
                 {
                     if(flag<2) {
 
-                        if ($("#firstExamPoints").val() === "" || $("#secondExamPoints").val() === "") {
-                            alert("First exam points and second exam points are required")
+                        if ($("#firstExamPoints").val() === "" || $("#secondExamPoints").val() === "" || $("#firstExamPercentage").val()==="" || $("#secondExamPercentage").val()==="") {
+                            alert("First exam points and second exam points and weight on grade are required")
                             thrown=1
 
-                        } else if ($("#firstExamPoints").val() !== "" || $("#secondExamPoints").val() !== "" )
+
+                        }
+
+
+                        else
                             flag+=2;
                     }
                 }
@@ -78,9 +153,9 @@
 
                 if(isDisabledFinalExam===0)
                 {
-                    if($("#finalExamPoints").val()==="" && thrown===0)
+                    if($("#finalExamPoints").val()==="" || $("#finalExamPercentage").val()==="" && thrown===0 )
                     {
-                        alert("Final exam points are required")
+                        alert("Final exam points and weight on grade are required")
 
                     }
                     else
