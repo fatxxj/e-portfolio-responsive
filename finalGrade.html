@@ -130,41 +130,31 @@
             });
 
 
-
-
             $("#calculate").click(function () {
 
-                thrown=0
-                if(isDisabled===0)
-                {
-                    if(flag<2) {
+                thrown = 0
+                if (isDisabled === 0) {
+                    if (flag < 2) {
 
-                        if ($("#firstExamPoints").val() === "" || $("#secondExamPoints").val() === "" || $("#firstExamPercentage").val()==="" || $("#secondExamPercentage").val()==="") {
+                        if ($("#firstExamPoints").val() === "" || $("#secondExamPoints").val() === "" || $("#firstExamPercentage").val() === "" || $("#secondExamPercentage").val() === "") {
                             alert("First exam points and second exam points and weight on grade are required")
-                            thrown=1
+                            thrown = 1
 
 
-                        }
-
-
-                        else
-                            flag+=2;
+                        } else
+                            flag += 2;
                     }
                 }
 
 
-                if(isDisabledFinalExam===0)
-                {
-                    if($("#finalExamPoints").val()==="" || $("#finalExamPercentage").val()==="" && thrown===0 )
-                    {
+                if (isDisabledFinalExam === 0) {
+                    if ($("#finalExamPoints").val() === "" || $("#finalExamPercentage").val() === "" && thrown === 0) {
                         alert("Final exam points and weight on grade are required")
 
-                    }
-                    else
-                        flag+=2;
+                    } else
+                        flag += 2;
                 }
-                if($("#assigmentsPoints").val()!=="" && $("#assigmentsPercentage").val()==="")
-                {
+                if ($("#assigmentsPoints").val() !== "" && $("#assigmentsPercentage").val() === "") {
 
                     alert("Assigments points are inserted, assigments weight on grade is required")
                     flag--;
@@ -172,15 +162,13 @@
                 }
 
 
-                if($("#assigmentsPoints").val()==="" && $("#assigmentsPercentage").val()!=="")
-                {
+                if ($("#assigmentsPoints").val() === "" && $("#assigmentsPercentage").val() !== "") {
 
                     alert("Assigments weight on grade is inserted, assigment points are required")
                     flag--
                 }
 
-                if($("#presencePoints").val()!=="" && $("#presencePercentage").val()==="")
-                {
+                if ($("#presencePoints").val() !== "" && $("#presencePercentage").val() === "") {
 
                     alert("Presence points are inserted, it is needed to insert presence points weight on grade")
                     flag--;
@@ -188,15 +176,13 @@
                 }
 
 
-                if($("#presencePoints").val()==="" && $("#presencePercentage").val()!=="")
-                {
+                if ($("#presencePoints").val() === "" && $("#presencePercentage").val() !== "") {
 
                     alert("Presence points weight on grade is inserted, please insert amount of presence points.")
                     flag--
                 }
 
-                if($("#bonusPoints").val()!=="" && $("#bonusPercentage").val()==="")
-                {
+                if ($("#bonusPoints").val() !== "" && $("#bonusPercentage").val() === "") {
 
                     alert("Bonus points are inserted, it is needed to insert bonus points weight on grade")
                     flag--;
@@ -204,16 +190,14 @@
                 }
 
 
-                if($("#bonusPoints").val()==="" && $("#bonusPercentage").val()!=="")
-                {
+                if ($("#bonusPoints").val() === "" && $("#bonusPercentage").val() !== "") {
 
                     alert("Bonus points weight on grade is inserted, please insert amount of bonus points.")
                     flag--
                 }
 
 
-
-                success="success"
+                success = "success"
                 if (flag === 2) {
                     //$("#result").show()
                     $("#hrID").show()
@@ -234,7 +218,7 @@
 
 
                 } else {
-                     location.reload()
+                    location.reload()
 
                 }
 
@@ -252,40 +236,40 @@
                 bonusPercentage = parseFloat($("#bonusPercentage").val()) / 100
 
 
-                rezultatFirstExamPercentage=parseFloat(firstExamPoints) * parseFloat(firstExamPercentage);
+                rezultatFirstExamPercentage = parseFloat(firstExamPoints) * parseFloat(firstExamPercentage);
                 console.log(rezultatFirstExamPercentage)
-                rezutatSecondExamPercentage=parseFloat(secondExamPoints)*parseFloat(secondExamPercentage);
+                rezutatSecondExamPercentage = parseFloat(secondExamPoints) * parseFloat(secondExamPercentage);
                 console.log(rezutatSecondExamPercentage);
-                rezultatFinalExamPercentage=parseFloat(finalExamPoints)*parseFloat(finalExamPercentage)
+                rezultatFinalExamPercentage = parseFloat(finalExamPoints) * parseFloat(finalExamPercentage)
                 console.log(rezultatFinalExamPercentage)
-                rezultatAssigmentsPercentage=parseFloat(assigmentsPoints)*parseFloat(assigmentsPercentage)
+                rezultatAssigmentsPercentage = parseFloat(assigmentsPoints) * parseFloat(assigmentsPercentage)
                 console.log(rezultatAssigmentsPercentage)
-                rezultatBonusPercentage=parseFloat(bonusPoints)*parseFloat(bonusPercentage)
+                rezultatBonusPercentage = parseFloat(bonusPoints) * parseFloat(bonusPercentage)
                 console.log(rezultatBonusPercentage)
-                rezultatPresencePoints=parseFloat(presencePoints)*parseFloat(presencePercentage)
+                rezultatPresencePoints = parseFloat(presencePoints) * parseFloat(presencePercentage)
                 console.log(rezultatPresencePoints)
 
 
-                if(isNaN(rezultatFirstExamPercentage))
-                rezultatFirstExamPercentage=0
+                if (isNaN(rezultatFirstExamPercentage))
+                    rezultatFirstExamPercentage = 0
 
-                if(isNaN(rezutatSecondExamPercentage))
-                    rezutatSecondExamPercentage=0
+                if (isNaN(rezutatSecondExamPercentage))
+                    rezutatSecondExamPercentage = 0
 
-                if(isNaN(rezultatFinalExamPercentage))
-                    rezultatFinalExamPercentage=0
+                if (isNaN(rezultatFinalExamPercentage))
+                    rezultatFinalExamPercentage = 0
 
-                if(isNaN(rezultatAssigmentsPercentage))
-                    rezultatAssigmentsPercentage=0
+                if (isNaN(rezultatAssigmentsPercentage))
+                    rezultatAssigmentsPercentage = 0
 
-                if(isNaN(rezultatPresencePoints))
-                    rezultatPresencePoints=0
+                if (isNaN(rezultatPresencePoints))
+                    rezultatPresencePoints = 0
 
-                if(isNaN(rezultatBonusPercentage))
-                    rezultatBonusPercentage=0
+                if (isNaN(rezultatBonusPercentage))
+                    rezultatBonusPercentage = 0
 
 
-                rezultatTotalPercentage=rezultatFirstExamPercentage+rezutatSecondExamPercentage+rezultatFinalExamPercentage+rezultatAssigmentsPercentage+rezultatBonusPercentage+rezultatPresencePoints
+                rezultatTotalPercentage = rezultatFirstExamPercentage + rezutatSecondExamPercentage + rezultatFinalExamPercentage + rezultatAssigmentsPercentage + rezultatBonusPercentage + rezultatPresencePoints
                 console.log(rezultatBonusPercentage)
 
                 $("#firstExamPercentageShow").append(rezultatFirstExamPercentage)
