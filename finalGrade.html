@@ -29,14 +29,14 @@
             $('#firstExamPoints').on('input', function () {
 
                 if ($("#firstExamPoints").val() !== "") {
-                    $("#finalExamPoints, #finalExamPercentage ").prop('disabled', true);
+                    $("#finalExamPoints, #finalExamPercentage ").attr('disabled', 'disabled');
                     isDisabledFinalExam = 1 //gets disabled when points entered for first exam
                     console.log(isDisabledFinalExam)
 
                 }
 
                 if ($("#firstExamPoints").val() === "") {
-                    $("#finalExamPoints, #finalExamPercentage  ").prop('disabled', false);
+                    $("#finalExamPoints, #finalExamPercentage  ").attr('enabled', 'enabled');
                     isDisabledFinalExam = 0 //undo disable when first exam is empty
                     console.log(isDisabledFinalExam)
 
@@ -47,14 +47,14 @@
             $('#firstExamPercentage').on('input', function () {
 
                 if ($("#firstExamPercentage").val() !== "") {
-                    $("#finalExamPoints, #finalExamPercentage ").prop('disabled', true);
+                    $("#finalExamPoints, #finalExamPercentage ").attr('disabled', 'disabled');
                     isDisabledFinalExam = 1 //gets disabled when points entered for first exam
                     console.log(isDisabledFinalExam)
 
                 }
 
                 if ($("#firstExamPercentage").val() === "") {
-                    $("#finalExamPoints, #finalExamPercentage  ").prop('disabled', false);
+                    $("#finalExamPoints, #finalExamPercentage  ").attr('enabled', 'enabled');
                     isDisabledFinalExam = 0 //undo disable when first exam is empty
                     console.log(isDisabledFinalExam)
 
@@ -64,14 +64,14 @@
             $('#secondExamPoints').on('input', function () {
 
                 if ($("#secondExamPoints").val() !== "") {
-                    $("#finalExamPoints, #finalExamPercentage ").prop('disabled', true);
+                    $("#finalExamPoints, #finalExamPercentage ").attr('disabled', 'disabled');
                     isDisabledFinalExam = 1 //gets disabled when points entered for first exam
                     console.log(isDisabledFinalExam)
 
                 }
 
                 if ($("#secondExamPoints").val() === "") {
-                    $("#finalExamPoints, #finalExamPercentage  ").prop('disabled', false);
+                    $("#finalExamPoints, #finalExamPercentage  ").attr('enabled', 'enabled');
                     isDisabledFinalExam = 0 //undo disable when first exam is empty
                     console.log(isDisabledFinalExam)
 
@@ -82,14 +82,14 @@
             $('#secondExamPercentage').on('input', function () {
 
                 if ($("#secondExamPercentage").val() !== "") {
-                    $("#finalExamPoints, #finalExamPercentage ").prop('disabled', true);
+                    $("#finalExamPoints, #finalExamPercentage ").attr('disabled', 'disabled');
                     isDisabledFinalExam = 1 //gets disabled when points entered for first exam
                     console.log(isDisabledFinalExam)
 
                 }
 
                 if ($("#secondExamPercentage").val() === "") {
-                    $("#finalExamPoints, #finalExamPercentage  ").prop('disabled', false);
+                    $("#finalExamPoints, #finalExamPercentage  ").attr('enabled', 'enabled');
                     isDisabledFinalExam = 0 //undo disable when first exam is empty
                     console.log(isDisabledFinalExam)
 
@@ -101,13 +101,13 @@
             $('#finalExamPoints').on('input', function () {
 
                 if ($("#finalExamPoints").val() !== "") {
-                    $("#firstExamPoints, #firstExamPercentage, #secondExamPoints, #secondExamPercentage ").prop('disabled', true);
+                    $("#firstExamPoints, #firstExamPercentage, #secondExamPoints, #secondExamPercentage ").attr('disabled', 'disabled');
                     isDisabled = 1 //gets disabled exam field when final exam points are enterred
                     console.log(isDisabled)
 
                 }
                 if ($("#finalExamPoints").val() === "") {
-                    $("#firstExamPoints, #firstExamPercentage,#secondExamPoints, #secondExamPercentage ").prop('disabled', false);
+                    $("#firstExamPoints, #firstExamPercentage,#secondExamPoints, #secondExamPercentage ").attr('enabled', 'enabled');
                     isDisabled = 0 //first exam second exam gets enabled when final exam points are emptyu
                     console.log(isDisabled)
 
@@ -116,13 +116,13 @@
             $('#finalExamPercentage').on('input', function () {
 
                 if ($("#finalExamPercentage").val() !== "") {
-                    $("#firstExamPoints, #firstExamPercentage, #secondExamPoints, #secondExamPercentage ").prop('disabled', true);
+                    $("#firstExamPoints, #firstExamPercentage, #secondExamPoints, #secondExamPercentage ").attr('disabled', 'disabled');
                     isDisabled = 1 //gets disabled exam field when final exam points are enterred
                     console.log(isDisabled)
 
                 }
                 if ($("#finalExamPercentage").val() === "") {
-                    $("#firstExamPoints, #firstExamPercentage,  #secondExamPoints, #secondExamPercentage ").prop('disabled', false);
+                    $("#firstExamPoints, #firstExamPercentage,  #secondExamPoints, #secondExamPercentage ").attr('enabled', 'enabled');
                     isDisabled = 0 //first exam second exam gets enabled when final exam points are emptyu
                     console.log(isDisabled)
 
@@ -393,14 +393,20 @@
         <div class="col-sm-7 col-md-7 col-lg-9 col-6"><br>
             <p class="display-6 custom">Total points on first exam</p>
             <div class="col-sm-5 col-md-5 col-lg-3 col-6  ">
-                <input type="number" min="0" placeholder="Insert number" id="firstExamPoints">
+                <input type="number" min="0" placeholder="Insert number" id="firstExamPoints" class="input-group-text"
+                       style="background-color: white">
             </div>
         </div>
 
         <div class="col-sm-7 col-md-7 col-lg-9 col-6"><br>
             <p class="display-6 custom">First exam percentage on grade</p>
-            <div class="col-sm-5 col-md-5 col-lg-3 col-6  ">
-                <input type="number" min="0" placeholder="%" id="firstExamPercentage">
+            <div class="input-group mb-3 col-sm-5 col-md-5 col-lg-3 col-6 ">
+                <div class="input-group-text">
+                    <input class="form-check-input mt-0" type="checkbox" value=""
+                           aria-label="Checkbox for following text input">
+                </div>
+                <input type="text" class="form-control input-group-text" id="firstExamPercentage"
+                       aria-label="Text input with checkbox" placeholder="%" style="background-color: white">
             </div>
         </div>
 
@@ -411,13 +417,19 @@
         <div class="col-sm-7 col-md-7 col-lg-9 col-6"><br>
             <p class="display-6 custom">Total points on second exam</p>
             <div class="col-sm-5 col-md-5 col-lg-3 col-6  ">
-                <input type="number" min="0" placeholder="Insert number" id="secondExamPoints">
+                <input type="number" min="0" placeholder="Insert number" id="secondExamPoints" class="input-group-text"
+                       style="background-color: white">
             </div>
         </div>
         <div class="col-sm-7 col-md-7 col-lg-9 col-6"><br>
             <p class="display-6 custom">Second exam percentage on grade</p>
-            <div class="col-sm-5 col-md-5 col-lg-3 col-6  ">
-                <input type="number" min="0" placeholder="%" id="secondExamPercentage">
+            <div class="input-group mb-3 col-sm-5 col-md-5 col-lg-3 col-6  ">
+                <div class="input-group-text">
+                    <input class="form-check-input mt-0" type="checkbox" value=""
+                           aria-label="Checkbox for following text input">
+                </div>
+                <input type="text" class="form-control input-group-text" id="secondExamPercentage"
+                       aria-label="Text input with checkbox" placeholder="%" style="background-color: white">
             </div>
         </div>
 
@@ -427,13 +439,19 @@
         <div class="col-sm-7 col-md-7 col-lg-9 col-6">
             <p class="display-6 custom">Total points on final exam</p>
             <div class="col-sm-5 col-md-5 col-lg-3 col-6  ">
-                <input type="number" min="0" placeholder="Insert number" id="finalExamPoints">
+                <input type="number" min="0" placeholder="Insert number" id="finalExamPoints" class="input-group-text"
+                       style="background-color: white">
             </div>
         </div>
         <div class="col-sm-7 col-md-7 col-lg-9 col-6 ">
             <p class="display-6 custom">Final exam percentage on grade</p>
-            <div class="col-sm-5 col-md-5 col-lg-3 col-6 ">
-                <input type="number" min="0" placeholder="%" class="totalInstallments" id="finalExamPercentage">
+            <div class="input-group mb-3 col-sm-5 col-md-5 col-lg-3 col-6  ">
+                <div class="input-group-text">
+                    <input class="form-check-input mt-0" type="checkbox" value=""
+                           aria-label="Checkbox for following text input">
+                </div>
+                <input type="text" class="form-control input-group-text" id="finalExamPercentage"
+                       aria-label="Text input with checkbox" placeholder="%" style="background-color: white">
             </div>
         </div>
     </div>
