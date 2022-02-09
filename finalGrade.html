@@ -18,13 +18,16 @@
 
 
         $(document).ready(function () {
+
+                $("html,body").scrollTop(0);
+
             $("#hrID").hide()
 
             var flag = 0;
             $("#result").hide()
             isDisabled = 0;
             isDisabledFinalExam = 0;
-
+        $("#spinner").hide()
 
             $('#firstExamPoints').on('input', function () {
 
@@ -145,6 +148,8 @@
 
 
             $("#calculate").click(function () {
+                $("#spinner").show()
+
 
                 thrown = 0
                 if (isDisabled === 0) {
@@ -221,14 +226,20 @@
                         borderStyle: "inset",
                         cursor: "wait"
                     });
-                    $("#result").slideDown(1000, function () {
-                        $(this)
+                    setTimeout(function (){
+                        $("#spinner").hide()
+                    },1000)
 
-                            .filter(".middle")
-                            .css("background", "yellow")
-                            .focus();
+                    setTimeout(function (){
+                        $("#result").slideDown(1500, function () {
+                            $(this)
 
-                    });
+                                .filter(".middle")
+                                .css("background", "yellow")
+                                .focus();
+
+                        });
+                    },1000)
 
 
                 } else {
@@ -252,17 +263,53 @@
 
                 rezultatFirstExamPercentage = parseFloat(firstExamPoints) * parseFloat(firstExamPercentage);
                 console.log(rezultatFirstExamPercentage)
+
+                if($('#firstExamCheckButton').is(":checked")) //scaled percentage calculation
+                {
+                    rezultatFirstExamPercentage=(parseFloat(firstExamPoints) / parseFloat(firstExamPercentage))*parseFloat(firstExamPercentage)
+
+
+                }
+
                 rezutatSecondExamPercentage = parseFloat(secondExamPoints) * parseFloat(secondExamPercentage);
                 console.log(rezutatSecondExamPercentage);
+
+                if($('#secondExamCheckButton').is(":checked")) //scaled percentage calculation
+                {
+                    rezutatSecondExamPercentage=(parseFloat(secondExamPoints) / parseFloat(secondExamPercentage))*parseFloat(secondExamPercentage)
+                }
+
                 rezultatFinalExamPercentage = parseFloat(finalExamPoints) * parseFloat(finalExamPercentage)
                 console.log(rezultatFinalExamPercentage)
+
+                if($('#finalExamCheckButton').is(":checked")) //scaled percentage calculation
+                {
+                    rezultatFinalExamPercentage=(parseFloat(finalExamPoints) / parseFloat(finalExamPercentage))*parseFloat(finalExamPercentage)
+                }
+
                 rezultatAssigmentsPercentage = parseFloat(assigmentsPoints) * parseFloat(assigmentsPercentage)
                 console.log(rezultatAssigmentsPercentage)
+
+                if($('#assigmentsCheckButton').is(":checked")) //scaled percentage calculation
+                {
+                    rezultatAssigmentsPercentage=(parseFloat(assigmentsPoints) / parseFloat(assigmentsPercentage))*parseFloat(assigmentsPercentage)
+                }
+
                 rezultatBonusPercentage = parseFloat(bonusPoints) * parseFloat(bonusPercentage)
                 console.log(rezultatBonusPercentage)
+
+                if($('#bonusCheckButton').is(":checked")) //scaled percentage calculation
+                {
+                    rezultatBonusPercentage=(parseFloat(bonusPoints) / parseFloat(bonusPercentage))*parseFloat(bonusPercentage)
+                }
+
                 rezultatPresencePoints = parseFloat(presencePoints) * parseFloat(presencePercentage)
                 console.log(rezultatPresencePoints)
 
+                if($('#presenceCheckButton').is(":checked")) //scaled percentage calculation
+                {
+                    rezultatPresencePoints=(parseFloat(presencePoints) / parseFloat(presencePercentage))*parseFloat(presencePercentage)
+                }
 
                 if (isNaN(rezultatFirstExamPercentage))
                     rezultatFirstExamPercentage = 0
@@ -283,7 +330,8 @@
                     rezultatBonusPercentage = 0
 
 
-                rezultatTotalPercentage = rezultatFirstExamPercentage + rezutatSecondExamPercentage + rezultatFinalExamPercentage + rezultatAssigmentsPercentage + rezultatBonusPercentage + rezultatPresencePoints
+                rezultatTotalPercentage =( rezultatFirstExamPercentage + rezutatSecondExamPercentage + rezultatFinalExamPercentage + rezultatAssigmentsPercentage + rezultatBonusPercentage + rezultatPresencePoints).toFixed(2)
+
                 console.log(rezultatBonusPercentage)
 
                 $("#firstExamPercentageShow").append(rezultatFirstExamPercentage)
@@ -418,10 +466,10 @@
         </symbol>
     </svg>
 
-    <div class="alert alert-primary d-flex align-items-center alert-dismissible fade show " style="text-align: center" role="alert">
+    <div class="alert alert-primary d-flex align-items-center  alert-dismissible fade show " style="text-align: justify" role="alert">
         <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
         <div>
-            If the percentage weight on grade is scaled to grade, please check the appropriate button left to the appropriate input field
+            If the points of the exam are scaled to percentage weight on grade, please check the appropriate button left to the appropriate input field
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
         </div>
@@ -442,7 +490,7 @@
             <p class="display-6 custom">First exam percentage on grade</p>
             <div class="input-group mb-3 col-sm-5 col-md-5 col-lg-3 col-6 ">
                 <div class="input-group-text">
-                    <input class="form-check-input mt-0" type="checkbox" onclick="myFunction()"  title="Check button if percentage is scaled" value=""
+                    <input class="form-check-input mt-0" type="checkbox" id="firstExamCheckButton"  title="Check button if percentage is scaled" value=""
                            aria-label="Checkbox for following text input">
                 </div>
                 <input type="text" class="form-control input-group-text" id="firstExamPercentage"
@@ -465,7 +513,7 @@
             <p class="display-6 custom">Second exam percentage on grade</p>
             <div class="input-group mb-3 col-sm-5 col-md-5 col-lg-3 col-6  ">
                 <div class="input-group-text">
-                    <input class="form-check-input mt-0" type="checkbox"  title="Check button if percentage is scaled" value=""
+                    <input class="form-check-input mt-0" type="checkbox" id="secondExamCheckButton" title="Check button if percentage is scaled" value=""
                            aria-label="Checkbox for following text input">
                 </div>
                 <input type="text" class="form-control input-group-text" id="secondExamPercentage"
@@ -487,7 +535,7 @@
             <p class="display-6 custom">Final exam percentage on grade</p>
             <div class="input-group mb-3 col-sm-5 col-md-5 col-lg-3 col-6  ">
                 <div class="input-group-text">
-                    <input class="form-check-input mt-0" type="checkbox"  title="Check button if percentage is scaled" value=""
+                    <input class="form-check-input mt-0" type="checkbox" id="finalExamCheckButton"  title="Check button if percentage is scaled" value=""
                            aria-label="Checkbox for following text input">
                 </div>
                 <input type="text" class="form-control input-group-text" id="finalExamPercentage"
@@ -508,7 +556,7 @@
             <p class="display-6 custom"> Percentage from assigments on grade</p>
             <div class="input-group mb-3 col-sm-5 col-md-5 col-lg-3 col-6 ">
                 <div class="input-group-text">
-                    <input class="form-check-input mt-0" type="checkbox"  title="Check button if percentage is scaled" value=""
+                    <input class="form-check-input mt-0" type="checkbox" id="assigmentsCheckButton"  title="Check button if percentage is scaled" value=""
                            aria-label="Checkbox for following text input">
                 </div>
                 <input type="text" class="form-control input-group-text" id="assigmentsPercentage"
@@ -528,7 +576,7 @@
             <p class="display-6 custom"> Percentage from presence on grade </p>
             <div class="input-group mb-3 col-sm-5 col-md-5 col-lg-3 col-6 ">
                 <div class="input-group-text">
-                    <input class="form-check-input mt-0" type="checkbox"  title="Check button if percentage is scaled" value=""
+                    <input class="form-check-input mt-0" type="checkbox" id="presenceCheckButton" title="Check button if percentage is scaled" value=""
                            aria-label="Checkbox for following text input">
                 </div>
                 <input type="text" class="form-control input-group-text" id="presencePercentage"
@@ -549,7 +597,7 @@
             <p class="display-6 custom"> Percentage from bonus on grade </p>
             <div class="input-group mb-3 col-sm-5 col-md-5 col-lg-3 col-6 ">
                 <div class="input-group-text">
-                    <input class="form-check-input mt-0" type="checkbox" value=""
+                    <input class="form-check-input mt-0" type="checkbox" id="bonusCheckButton" value=""
                            aria-label="Checkbox for following text input" title="Check button if percentage is scaled">
                 </div>
                 <input type="text" class="form-control input-group-text" id="bonusPercentage"
@@ -570,6 +618,14 @@
 
     </div>
 
+    <br>
+
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status" id="spinner">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
     <div id="result">
         <hr id="hrID">
         <div class="row text-center">
@@ -584,7 +640,7 @@
                 <p class="display-6 custom">Total percentage from first exam is: </p>
             </div>
             <div class="col-sm-7 col-md-7 col-lg-9 col-3 offset-1 align-self-center">
-                <span id="firstExamPercentageShow"></span>
+                <span id="firstExamPercentageShow"></span><span> %</span>
             </div>
             <hr>
         </div>
@@ -593,7 +649,7 @@
                 <p class="display-6 custom">Total percentage from second exam is: </p>
             </div>
             <div class="col-sm-7 col-md-7 col-lg-9 col-3 offset-1 align-self-center">
-                <span id="secondExamPercentageShow"></span>
+                <span id="secondExamPercentageShow"></span><span> %</span>
             </div>
             <hr>
         </div>
@@ -602,7 +658,7 @@
                 <p class="display-6 custom">Total percentage final exam: </p>
             </div>
             <div class="col-sm-7 col-md-7 col-lg-9 col-3 offset-1 align-self-center">
-                <span id="finalExamPercentageShow"></span>
+                <span id="finalExamPercentageShow"></span><span> %</span>
             </div>
             <hr>
         </div>
@@ -612,7 +668,7 @@
                 <p class="display-6 custom">Total percentage from assigments is: </p>
             </div>
             <div class="col-sm-7 col-md-7 col-lg-9 col-3 offset-1 align-self-center">
-                <span id="assigmentsPercentageShow"></span>
+                <span id="assigmentsPercentageShow"></span><span> %</span>
             </div>
             <hr>
         </div>
@@ -622,7 +678,7 @@
                 <p class="display-6 custom">Total percentage from presence is: </p>
             </div>
             <div class="col-sm-7 col-md-7 col-lg-9 col-3 offset-1 align-self-center">
-                <span id="presencePercentageShow"></span>
+                <span id="presencePercentageShow"></span><span> %</span>
             </div>
             <hr>
         </div>
@@ -632,7 +688,7 @@
                 <p class="display-6 custom">Total percentage from bonus is: </p>
             </div>
             <div class="col-sm-7 col-md-7 col-lg-9 col-3 offset-1 align-self-center">
-                <span id="bonusPercentageShow" class="text-center"></span>
+                <span id="bonusPercentageShow" class="text-center"></span><span> %</span>
             </div>
             <hr>
         </div>
@@ -642,7 +698,7 @@
                 <p class="display-6 custom">Total percentage for the subject is: </p>
             </div>
             <div class="col-sm-7 col-md-7 col-lg-9 col-3 offset-1 align-self-center">
-                <span id="TotalPercentageShow" class="text-end"></span>
+                <span id="TotalPercentageShow" class="text-end"></span><span> %</span>
             </div>
             <hr>
         </div>
