@@ -408,6 +408,7 @@
             }
         }
 
+
         @media only screen and (min-width: 930px) {
 
 
@@ -425,10 +426,13 @@
 
             .btn-outline-secondary {
                 height: 5vw;
+                width: 25vw;
+                text-align: center;
             }
 
             .input-group-text {
                 height: 5vw;
+
             }
 
             #firstExamPoints, #secondExamPoints, #finalExamPoints, #assigmentsPoints, #presencePoints, #bonusPoints {
@@ -437,6 +441,7 @@
 
             span.display-6.custom.R {
                 font-size: 16px;
+
             }
 
         }
@@ -457,7 +462,7 @@
 
             span.display-6.custom.R {
 
-                font-size: 28px;
+                font-size: 26px;
             }
 
             .btn-outline-secondary {
@@ -475,8 +480,7 @@
                 width: 380%;
             }
 
-            .input-group-text
-            {
+            .input-group-text {
                 font-size: 1.3rem;
             }
 
@@ -492,10 +496,15 @@
                 text-align: center;
                 font-size: 18px;
             }
+
+            .display-6.custom.R {
+
+               text-align: start;
+            }
+
             .btn-outline-secondary {
                 height: 17vw;
             }
-
 
 
         }
@@ -724,8 +733,9 @@
             <div class="col-sm-6 col-md-6 col-lg-6 col-8">
                 <p class="display-6 custom R">Total percentage from first exam is: </p>
             </div>
-            <div class="col-sm-6 col-md-6 col-lg-6 col-3 ">
-                <span id="firstExamPercentageShow" class="display-6 custom R"></span><span class="display-6 custom R"> %</span>
+            <div class="col-sm-6 col-md-2 col-lg-1 col-3 offset-lg-5 offset-md-4 offset-1">
+                <span id="firstExamPercentageShow" class="display-6 custom R"></span><span
+                    class="display-6 custom R"> %</span>
             </div>
             <hr>
         </div>
@@ -734,7 +744,7 @@
             <div class="col-sm-6 col-md-6 col-lg-6 col-8">
                 <p class="display-6 custom R">Total percentage from second exam is: </p>
             </div>
-            <div class="col-sm-6 col-md-6 col-lg-6 col-3 ">
+            <div class="col-sm-6 col-md-2 col-lg-1 col-3 offset-lg-5 offset-md-4 offset-1 ">
                 <span id="secondExamPercentageShow" class="display-6 custom R"></span><span class="display-6 custom R"> %</span>
             </div>
             <hr>
@@ -744,8 +754,9 @@
             <div class="col-sm-6 col-md-6 col-lg-6 col-8">
                 <p class="display-6 custom R">Total percentage final exam: </p>
             </div>
-            <div class="col-sm-6 col-md-6 col-lg-6 col-3  ">
-                <span id="finalExamPercentageShow" class="display-6 custom R"></span><span class="display-6 custom R"> %</span>
+            <div class="col-sm-6 col-md-2 col-lg-1 col-3 offset-lg-5 offset-md-4  offset-1">
+                <span id="finalExamPercentageShow" class="display-6 custom R"></span><span
+                    class="display-6 custom R"> %</span>
             </div>
             <hr>
         </div>
@@ -754,7 +765,7 @@
             <div class="col-sm-6 col-md-6 col-lg-6 col-8">
                 <p class="display-6 custom R">Total percentage from assigments is: </p>
             </div>
-            <div class="col-sm-6 col-md-6 col-lg-6 col-3 ">
+            <div class="col-sm-6 col-md-2 col-lg-1 col-3 offset-lg-5 offset-md-4 offset-1 ">
                 <span id="assigmentsPercentageShow" class="display-6 custom R"></span><span class="display-6 custom R"> %</span>
             </div>
             <hr>
@@ -764,8 +775,9 @@
             <div class="col-sm-6 col-md-6 col-lg-6 col-8">
                 <p class="display-6 custom R">Total percentage from presence is: </p>
             </div>
-            <div class="col-sm-6 col-md-6 col-lg-6 col-3 ">
-                <span id="presencePercentageShow" class="display-6 custom R"></span><span class="display-6 custom R"> %</span>
+            <div class="col-sm-6 col-md-2 col-lg-1 col-3 offset-lg-5 offset-md-4 offset-1 ">
+                <span id="presencePercentageShow" class="display-6 custom R"></span><span
+                    class="display-6 custom R"> %</span>
             </div>
             <hr>
         </div>
@@ -774,8 +786,9 @@
             <div class="col-sm-6 col-md-6 col-lg-6 col-8">
                 <p class="display-6 custom R">Total percentage from bonus is: </p>
             </div>
-            <div class="col-sm-6 col-md-6 col-lg-6 col-3">
-                <span id="bonusPercentageShow" class="display-6 custom R"></span><span class="display-6 custom R"> %</span>
+            <div class="col-sm-6 col-md-2 col-lg-1 col-3 offset-lg-5 offset-md-4 offset-1">
+                <span id="bonusPercentageShow" class="display-6 custom R"></span><span
+                    class="display-6 custom R"> %</span>
             </div>
             <hr>
         </div>
@@ -784,8 +797,9 @@
             <div class="col-sm-6 col-md-6 col-lg-6 col-8">
                 <p class="display-6 custom R">Total percentage for the subject is: </p>
             </div>
-            <div class="col-sm-6 col-md-6 col-lg-6 col-3">
-                <span id="TotalPercentageShow" class="display-6 custom R"></span><span class="display-6 custom R"> %</span>
+            <div class="col-sm-6 col-md-2 col-lg-1 col-3 offset-lg-5 offset-md-4 offset-1">
+                <span id="TotalPercentageShow" class="display-6 custom R"></span><span
+                    class="display-6 custom R"> %</span>
             </div>
             <hr>
         </div>
@@ -798,13 +812,12 @@
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6 col-6 "><br>
                 <button onclick="window.print()" class="btn btn-outline-secondary " id="printbutton1">Print
-                   grade report
+                    grade report
                 </button>
                 <br><br>
             </div>
 
         </div>
-
 
 
     </div>
