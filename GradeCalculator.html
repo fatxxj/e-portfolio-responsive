@@ -98,6 +98,10 @@
             {
                 window.open("finalGrade.html")
             })
+            $("#calculateFinal2").click(function ()
+            {
+                window.open("finalGrade.html")
+            })
 
 
         })
@@ -112,6 +116,11 @@
         .totalInstallments {
             margin-bottom: 1vw;
             margin-left: 4px;
+        }
+
+        .input-group-text
+        {
+            background-color: white;
         }
 
         input {
@@ -166,7 +175,7 @@
             <p class="display-6 custom">Exam points you have</p>
         </div>
         <div class="col-sm-5 col-md-5 col-lg-3 col-12  "><br>
-            <input type="number" min="0" placeholder="Insert number" id="examPoints">
+            <input type="number" min="0" placeholder="Insert number" id="examPoints" class="input-group-text">
         </div>
     </div>
     <div class="row justify-content-around">
@@ -174,7 +183,7 @@
             <p class="display-6 custom">Insert MAX exam points</p>
         </div>
         <div class="col-sm-5 col-md-5 col-lg-3 col-12 "><br>
-            <input type="number" min="0" placeholder="Insert number" class="totalInstallments" id="maxExamPoints">
+            <input type="number" min="0" placeholder="Insert number" class="input-group-text" id="maxExamPoints">
 
         </div>
     </div>
@@ -183,7 +192,7 @@
             <p class="display-6 custom">Exam weight on grade (percentage)</p>
         </div>
         <div class="col-sm-5 col-md-5 col-lg-3 col-12  "><br>
-            <input type="number" placeholder="%" id="percentage" min="0">
+            <input type="number" placeholder="%" id="percentage" min="0" class="input-group-text">
         </div>
     </div>
     <div class="row justify-content-between text-center">
@@ -206,7 +215,7 @@
                 <p class="display-6 custom">Exam points as percentage</p>
             </div>
             <div class="col-sm-5 col-md-5 col-lg-3 col-12  "><br>
-                <input type="text" placeholder="" id="pointsAsPercentage">
+                <input type="text" placeholder="" id="pointsAsPercentage" class="input-group-text">
             </div>
         </div>
         <div class="row ">
@@ -214,20 +223,26 @@
                 <p class="display-6 custom">Exam percentage on final grade</p>
             </div>
             <div class="col-sm-5 col-md-5 col-lg-3 col-12  "><br>
-                <input type="text" placeholder="" id="percentageOnFinal">
+                <input type="text" placeholder="" id="percentageOnFinal" class="input-group-text">
             </div>
         </div>
 
 
-        <div class="row">
+        <div class="row justify-content-start">
 
-            <div class="col-sm-7 col-md-7 col-lg-7 col-6"><br>
-                <button class="btn btn-outline-secondary " id="calculateAgain">Calculate again
+            <div class="col-sm-7 col-md-4 col-lg-4 col-6"><br>
+                <button class="btn btn-outline-secondary last" id="calculateAgain">Calculate again
                 </button>
             </div>
-            <div class="col-sm-5 col-md-5 col-lg-5 col-6 text-end "><br>
-                <button onclick="window.print()" class="btn btn-outline-secondary " id="printbutton1">Print
+            <div class="col-sm-5 col-md-4 col-lg-4 col-6  "><br>
+                <button onclick="window.print()" class="btn btn-outline-secondary last" id="printbutton1">Print
                     report
+                </button>
+                <br><br>
+
+            </div>
+            <div class="col-sm-5 col-md-4 col-lg-4 col-6  "><br>
+                <button  class="btn btn-outline-secondary last " id="calculateFinal2">Calculate final grade
                 </button>
                 <br><br>
 
