@@ -190,6 +190,47 @@
 
         }
 
+
+        @media only screen and (min-width: 750px) {
+            .btn-outline-secondary {
+                height: 7vw;
+                width: 20vw;
+            }
+
+
+            .display-6.custom {
+                font-size: 22px;
+            }
+
+            /*.d-flex.C.justify-content-end*/
+            /*{*/
+            /*    height: 5vw*/
+            /*    */
+            /*}*/
+            .d-flex.C
+            {
+                height: 5vw;
+            }
+        }
+
+        @media only screen and (min-width: 1515px) {
+            .btn-outline-secondary {
+                height: 4vw;
+                width: 10vw;
+            }
+
+            .input-group-text, .form-control {
+                height: 3.5vw;
+            }
+
+            .display-6.custom {
+                font-size: 28px;
+            }
+        }
+
+
+
+
         .form-control, .input-group-text {
             text-align: center;
             font-style: italic;
@@ -215,6 +256,7 @@
             box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0);
             text-align: center;
         }
+
 
 
     </style>
@@ -253,10 +295,11 @@
         </div>
         <div class="col-sm-5 col-md-5 col-lg-3 col-12 text-end"><br>
             <div class="input-group mb-3 text-end">
-                <span class="input-group-text euro" style="background-color: lightgray">	&euro;</span>
-                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="1000"
+
+                <input type="number" class="form-control" id="totalLoan" aria-label="Amount (to the nearest dollar)"
+                       placeholder="1000"
                        max="10">
-                <span class="input-group-text decimal">.00</span>
+                <span class="input-group-text euro" style="background-color: lightgray">	&euro;</span>
 
                 <!--            <input type="number" min="0" placeholder="Insert number" id="totalLoan" class="input-group-text" >-->
             </div>
@@ -278,11 +321,10 @@
         </div>
         <div class="col-sm-5 col-md-5 col-lg-3 col-12 text-end"><br>
             <div class="input-group mb-3 text-end">
-                <span class="input-group-text euro" style="background-color: lightgray">%</span>
-
-                <input type="text" class="form-control" id="interest" aria-label="Amount (to the nearest dollar)" placeholder="%"
+                <input type="text" class="form-control" id="interest" aria-label="Amount (to the nearest dollar)"
+                       placeholder="%"
                        max="10">
-
+                <span class="input-group-text euro" style="background-color: lightgray">%</span>
                 <!--            <input type="number" min="0" placeholder="Insert number" id="totalLoan" class="input-group-text" >-->
             </div>
         </div>
@@ -304,37 +346,37 @@
             </div>
         </div>
         <div class="row ">
-            <div class="col-sm-7 col-md-7 col-lg-9 col-12"><br>
+            <div class="col-sm-7 col-md-6 col-lg-9 col-12"><br>
                 <p class="display-6 custom">Interes amount</p>
             </div>
-            <div class="col-sm-5 col-md-5 col-lg-3 col-12  "><br>
-                <input class="input-group-text" type="text" placeholder="" id="totalInteres">
+            <div class="col-sm-5 col-md-6 col-lg-3 col-12 d-flex C justify-content-end align-items-end "><br>
+                <input readonly class="input-group-text" type="text" placeholder="" id="totalInteres">
             </div>
         </div>
         <div class="row ">
-            <div class="col-sm-7 col-md-7 col-lg-9 col-12"><br>
+            <div class="col-sm-7 col-md-6 col-lg-9 col-12"><br>
                 <p class="display-6 custom">Total return amount after interest calculation</p>
             </div>
-            <div class="col-sm-5 col-md-5 col-lg-3 col-12  "><br>
-                <input class="input-group-text" type="text" placeholder="" id="TotalreturnAmtWithInterest">
+            <div class="col-sm-5 col-md-6 col-lg-3 col-12  d-flex C justify-content-end  "><br>
+                <input readonly class="input-group-text" type="text" placeholder="" id="TotalreturnAmtWithInterest">
             </div>
         </div>
         <div class="row ">
             <div class="col-sm-7 col-md-7 col-lg-9 col-12"><br>
                 <p class="display-6 custom">Monthly installment amount</p>
             </div>
-            <div class="col-sm-5 col-md-5 col-lg-3 col-12  "><br>
-                <input class="input-group-text" type="text" placeholder="" id="returnAmt">
+            <div class="col-sm-5 col-md-5 col-lg-3 col-12 d-flex C justify-content-end align-items-end "><br>
+                <input readonly class="input-group-text" type="text" placeholder="" id="returnAmt">
             </div>
         </div>
+        <br><br>
+        <div class="row d-flex justify-content-center">
 
-        <div class="row">
-
-            <div class="col-sm-7 col-md-7 col-lg-7 col-6"><br>
+            <div class="col-sm-6 col-md-6 col-lg-6 col-12 d-flex justify-content-center"><br>
                 <button class="btn btn-outline-secondary " id="calculateAgain">Calculate again
                 </button>
             </div>
-            <div class="col-sm-5 col-md-5 col-lg-5 col-6 text-end "><br>
+            <div class="col-sm-6 col-md-6 col-lg-6 col-12 d-flex  justify-content-center"><br>
                 <button onclick="window.print()" class="btn btn-outline-secondary " id="printbutton1">Print
                     report
                 </button>
@@ -344,6 +386,7 @@
 
 
         </div>
+        <br><br>
 
 
     </div>
