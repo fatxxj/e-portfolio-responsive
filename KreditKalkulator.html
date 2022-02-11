@@ -144,6 +144,62 @@
                 text-align: center;
             }
         }
+        .input-group-text
+        {
+            background-color: white;
+
+        }
+        .input-group-text.C
+        {
+            margin: 5px;
+            display: inline-block;
+        }
+
+        @media only screen and (max-width: 480px) {
+            .input-group-text{
+                width: 100%;
+                height: 15vw;
+                font-size: 18.5px;
+                font-style: italic;
+            }
+
+            .display-6.custom {
+                text-align: center;
+            }
+           .btn-outline-secondary
+           {
+               width: 50%;
+               height: 75%;
+               text-align: center;
+           }
+        }
+
+        .form-control, .input-group-text
+        {
+            text-align: center;
+            font-style: italic;
+        }
+
+
+        .form-control:focus {
+            color: #212529;
+            background-color: #fff;
+            border-color: #86b7fe;
+            border-right-color: lightgray;
+            outline: 0;
+            box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0);
+            text-align: center;
+
+        }
+        .input-group-text:focus
+        {
+            color: #212529;
+            background-color: #fff;
+            border-color: #86b7fe;
+            outline: 0;
+            box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0);
+            text-align: center;
+        }
 
 
 
@@ -182,16 +238,22 @@
             <p class="display-6 custom">Insert loan amount</p>
         </div>
         <div class="col-sm-5 col-md-5 col-lg-3 col-12  "><br>
-            <input type="number" min="0" placeholder="Insert number" id="totalLoan">
+            <div class="input-group mb-3">
+                <span class="input-group-text" style="background-color: lightgray">	&euro;</span>
+                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="1000" max="10">
+                <span class="input-group-text">.00</span>
+
+<!--            <input type="number" min="0" placeholder="Insert number" id="totalLoan" class="input-group-text" >-->
+            </div>
         </div>
     </div>
     <div class="row justify-content-around">
-        <div class="col-sm-7 col-md-7 col-lg-9 col-12 "><br>
+        <div class="col-sm-7 col-md-7 col-lg-7 col-12 "><br>
             <p class="display-6 custom">Insert number of installments by months <i><u>or</u></i> by years</p>
         </div>
-        <div class="col-sm-5 col-md-5 col-lg-3 col-12 "><br>
-            <input type="number" min="0" placeholder="Number of years" class="totalInstallments" id="years">
-            <input type="number" min="0" placeholder="Number of months" class=" totalInstallments" id="months">
+        <div class="col-sm-5 col-md-5 col-lg-5 col-12 "><br>
+            <input  type="number" min="0" placeholder="Number of years" class="input-group-text C" id="years">
+            <input type="number" min="0" placeholder="Number of months" class="input-group-text C" id="months">
 
         </div>
     </div>
@@ -200,7 +262,7 @@
             <p class="display-6 custom">Interest percentage</p>
         </div>
         <div class="col-sm-5 col-md-5 col-lg-3 col-12  "><br>
-            <input type="number" placeholder="%" id="interest" min="0">
+            <input class="input-group-text" type="number" placeholder="%" id="interest" min="0">
         </div>
     </div>
     <div class="row text-center">
@@ -221,7 +283,7 @@
                 <p class="display-6 custom">Interes amount</p>
             </div>
             <div class="col-sm-5 col-md-5 col-lg-3 col-12  "><br>
-                <input type="text" placeholder="" id="totalInteres">
+                <input class="input-group-text" type="text" placeholder="" id="totalInteres">
             </div>
         </div>
         <div class="row ">
@@ -229,7 +291,7 @@
                 <p class="display-6 custom">Total return amount after interest calculation</p>
             </div>
             <div class="col-sm-5 col-md-5 col-lg-3 col-12  "><br>
-                <input type="text" placeholder="" id="TotalreturnAmtWithInterest">
+                <input  class="input-group-text" type="text" placeholder="" id="TotalreturnAmtWithInterest">
             </div>
         </div>
         <div class="row ">
@@ -237,7 +299,7 @@
                 <p class="display-6 custom">Monthly installment amount</p>
             </div>
             <div class="col-sm-5 col-md-5 col-lg-3 col-12  "><br>
-                <input type="text" placeholder="" id="returnAmt">
+                <input class="input-group-text" type="text" placeholder="" id="returnAmt">
             </div>
         </div>
 
