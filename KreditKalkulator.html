@@ -144,15 +144,7 @@
             display: inline-block;
         }
 
-        @media only screen and (max-width: 599px) {
-            input, #TotalreturnAmtWithInterest, #returnAmt {
-                width: 100%;
-            }
 
-            .display-6.custom {
-                text-align: center;
-            }
-        }
 
         @media only screen and (max-width: 480px) {
             .input-group-text {
@@ -162,6 +154,7 @@
                 font-style: italic;
             }
 
+
             .display-6.custom {
                 text-align: center;
             }
@@ -170,6 +163,15 @@
                 width: 50%;
                 height: 75%;
                 text-align: center;
+            }
+            #calculateAgain, #printbutton1
+            {
+                height: 13vw;
+                width: 50%;
+                text-align: center;
+                justify-content: center;
+                margin-top: 2.5vw;
+
             }
 
             .input-group-text.euro {
@@ -190,10 +192,20 @@
 
         }
 
+        @media only screen and (max-width: 599px) {
+            input, #TotalreturnAmtWithInterest, #returnAmt {
+                width: 100%;
+            }
+
+            .display-6.custom {
+                text-align: center;
+            }
+        }
+
 
         @media only screen and (min-width: 750px) {
             .btn-outline-secondary {
-                height: 7vw;
+                height: 6vw;
                 width: 20vw;
             }
 
@@ -207,8 +219,7 @@
             /*    height: 5vw*/
             /*    */
             /*}*/
-            .d-flex.C
-            {
+            .d-flex.C {
                 height: 5vw;
             }
         }
@@ -220,15 +231,13 @@
             }
 
             .input-group-text, .form-control {
-                height: 3.5vw;
+                height: 3vw;
             }
 
             .display-6.custom {
                 font-size: 28px;
             }
         }
-
-
 
 
         .form-control, .input-group-text {
@@ -256,7 +265,6 @@
             box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0);
             text-align: center;
         }
-
 
 
     </style>
@@ -357,7 +365,7 @@
             <div class="col-sm-7 col-md-6 col-lg-9 col-12"><br>
                 <p class="display-6 custom">Total return amount after interest calculation</p>
             </div>
-            <div class="col-sm-5 col-md-6 col-lg-3 col-12  d-flex C justify-content-end  "><br>
+            <div class="col-sm-5 col-md-6 col-lg-3 col-12  d-flex C justify-content-end align-items-end  "><br>
                 <input readonly class="input-group-text" type="text" placeholder="" id="TotalreturnAmtWithInterest">
             </div>
         </div>
