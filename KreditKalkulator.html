@@ -23,9 +23,9 @@
             $("#result").hide()
 
             $("#flexSwitchCheckDefault").change(function () {
-                 variableInteres = $(this).is(':checked');
+                variableInteres = $(this).is(':checked');
                 if (variableInteres === true) {
-                  //  console.log("variableInteres")
+                    //  console.log("variableInteres")
                     $("#customKamata").show()
                     $("#fixedInteres").hide()
 
@@ -42,7 +42,7 @@
 
             $("#customKamata").hide()
             $("#flexSwitchCheckDefault").change(function () {
-                 variableInteres = $(this).is(':checked');
+                variableInteres = $(this).is(':checked');
                 if (variableInteres === true) {
                     //console.log("variableInteres")
                     $("#customKamata").show()
@@ -50,21 +50,54 @@
                     $("span#switchCheck").text("Fixed interest percentage")
                 } else {
                     // do 'false' stuff, like disabling a 'Continue' button
-                   // console.log("fixedInteres")
+                    // console.log("fixedInteres")
                     $("#fixedInteres").show()
                     $("span#switchCheck").text("Variable interest percentage")
                 }
             })
 
+
+
+
             //calculations for both scenarios
 
 
-            $("#flexSwitchCheckDefault").change(function () {
-                variableInteres = $(this).is(':checked');
+            $("#calculate").click(function () {
+
+
+                variableInteres = $("#flexSwitchCheckDefault").is(':checked');
                 if (variableInteres === true) {
                     //  console.log("variableInteres")
                     $("#customKamata").show()
                     $("#fixedInteres").hide()
+                    // dynamic input field
+
+
+                    totalYearsLoan = parseInt($("#years").val()) * 12 + parseInt($("#months").val())
+                    console.log(totalYearsLoan)
+                    customYearsLoan1 = parseInt($("#years1").val()) * 12 + parseInt($("#months1").val())
+                    customInteres1= parseInt($("#interest1").val()) / 100
+                    console.log(customYearsLoan1)
+                    leftUntilEnd = totalYearsLoan;
+                    leftUntilEnd -= customYearsLoan1
+
+
+                    if (leftUntilEnd !== 0) {
+                        input = $("<input type='text' min='0' placeholder='Number of years' class='input-group-text C' >")
+                        input.val(totalYearsLoan)
+                        input.appendTo("#customKamata")
+
+                    }
+
+
+                     else {
+                        endText = $(" <p class='display-6 custom text-center'> Your loan installments are completed - check for result below</p>")
+                        endText.appendTo("#customKamata")
+                        $("#calculate").hide()
+                    }
+
+
+                    //end of dynamic input field
 
 
                 } else { //fixed interes
@@ -72,14 +105,9 @@
                     //console.log("fixedInteres")
 
 
-
                 }
-            })
 
 
-
-
-            $("#calculate").click(function () {
                 if ($("#totalLoan").val() === "") {
                     alert("Loan amount is required")
 
@@ -90,12 +118,20 @@
                     alert(" Number of installments either by month either by year is required")
                 else flag++;
 
-                if ($("#interest").val() === "")
-                    alert("Interest is required")
-                else flag++;
-                if ($("#interest").val() < 0) {
-                    alert("There is no such thing as negative interest percentage")
-                    flag--
+
+                variableInteres = $("#flexSwitchCheckDefault").is(':checked');
+                if (variableInteres === false) {
+                    if ($("#interest").val() === "")
+                        alert("Interest is required")
+                    else flag++;
+                } else {
+
+                    if ($("#interest1").val() === "")
+                        alert("Custom interest amount is required")
+                    else flag++;
+                    if ($("#years1").val() === "" && $("#months1").val() === "")
+                        alert("At least one of the custom fields for year and month is required")
+
                 }
 
 
@@ -158,9 +194,11 @@
                     totalRata = monthlyWithInterest / parseInt($("#months").val())
                     yearAndMonth = parseInt($("#months").val())
                 }
-                input = $(" <input type='text' readonly min='0'  class='input-group-text C'  >")
-                input.val(yearAndMonth)
-                input.appendTo("#customKamata")
+
+
+                // input = $(" <input type='text' readonly min='0'  class='input-group-text C'  >")
+                // input.val(yearAndMonth)
+                // input.appendTo("#customKamata")
 
                 console.log(yearAndMonth)
 
@@ -271,8 +309,6 @@
             //     }
             //
             // });
-
-
 
 
         })
@@ -531,6 +567,7 @@
 
 
     <div id="customKamata">
+        <br>
         <div class="row text-center ">
             <div class="col-">
                 <div class="display-6">Custom Interes Percentage</div>
