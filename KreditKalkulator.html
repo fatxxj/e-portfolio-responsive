@@ -20,6 +20,10 @@
             $("#hrID").hide()
 
             var flag = 0;
+            $("#newRow2").hide()
+            $("#newRow3").hide()
+            $("#newRow4").hide()
+            $("#newRow5").hide()
             $("#result").hide()
 
             $("#flexSwitchCheckDefault").change(function () {
@@ -57,9 +61,19 @@
             })
 
 
-
-
             //calculations for both scenarios
+            var i = 2;
+            $("#addAnother").click(function () {
+                $("#newRow"+ i).show();
+                i++;
+                console.log(i)
+                if(i===5)
+                {
+                    $("#addAnother").attr('disabled','disabled')
+                }
+            })
+
+
 
 
             $("#calculate").click(function () {
@@ -67,37 +81,14 @@
 
                 variableInteres = $("#flexSwitchCheckDefault").is(':checked');
                 if (variableInteres === true) {
-                    //  console.log("variableInteres")
-                    $("#customKamata").show()
-                    $("#fixedInteres").hide()
-                    // dynamic input field
 
+                    customYear1 = parseInt($("#years1").val())
+                    customMonth1 = parseInt($("#months1").val());
 
-                    totalYearsLoan = parseInt($("#years").val()) * 12 + parseInt($("#months").val())
-                    console.log(totalYearsLoan)
-                    customYearsLoan1 = parseInt($("#years1").val()) * 12 + parseInt($("#months1").val())
-                    customInteres1= parseInt($("#interest1").val()) / 100
-                    console.log(customYearsLoan1)
-                    leftUntilEnd = totalYearsLoan;
-                    leftUntilEnd -= customYearsLoan1
-
-
-                    if (leftUntilEnd !== 0) {
-                        input = $("<input type='text' min='0' placeholder='Number of years' class='input-group-text C' >")
-                        input.val(totalYearsLoan)
-                        input.appendTo("#customKamata")
-
-                    }
-
-
-                     else {
-                        endText = $(" <p class='display-6 custom text-center'> Your loan installments are completed - check for result below</p>")
-                        endText.appendTo("#customKamata")
-                        $("#calculate").hide()
-                    }
-
-
-                    //end of dynamic input field
+                    customInteres1 = parseFloat($("#interest1").val()) / 100
+                    console.log(customMonth1)
+                    console.log(customYear1)
+                    console.log(customInteres1)
 
 
                 } else { //fixed interes
@@ -575,7 +566,8 @@
         </div>
         <div class="row ">
             <div class="col-sm-7 col-md-7 col-lg-7 col-12 "><br>
-                <p class="display-6 custom">Insert total number of installments by months <i><u>or</u></i> by years</p>
+                <p class="display-6 custom">Insert first part of loan by months <i><u>or</u></i> by years
+                    <i><u>or</u></i> by both</p>
             </div>
             <div class="col-sm-5 col-md-5 col-lg-5 col-12 text-end  "><br>
                 <input type="number" min="0" placeholder="Number of years" class="input-group-text C" id="years1">
@@ -599,6 +591,151 @@
                 </div>
             </div>
         </div>
+        <br>
+
+        <div id="newRow2">
+            <hr style="width: 35vw; margin: auto">
+            <div class="row ">
+                <div class="col-sm-7 col-md-7 col-lg-7 col-12 "><br>
+                    <p class="display-6 custom">Insert first part of loan by months <i><u>or</u></i> by years
+                        <i><u>or</u></i> by both</p>
+                </div>
+                <div class="col-sm-5 col-md-5 col-lg-5 col-12 text-end  "><br>
+                    <input type="number" min="0" placeholder="Number of years" class="input-group-text C" id="years2">
+                    <input type="number" min="0" placeholder="Number of months" class="input-group-text C" id="months2">
+                </div>
+                <br>
+            </div>
+
+            <div class="row  ">
+                <div class="col-sm-7 col-md-7 col-lg-9 col-12"><br>
+                    <p class="display-6 custom">Interest percentage</p>
+                </div>
+
+                <div class="col-sm-5 col-md-5 col-lg-3 col-12 text-end"><br>
+                    <div class="input-group mb-3 text-end">
+                        <input type="text" class="form-control" id="interest2"
+                               aria-label="Amount (to the nearest dollar)"
+                               placeholder="%"
+                               max="10">
+                        <span class="input-group-text euro" style="background-color: lightgray">%</span>
+                        <!--            <input type="number" min="0" placeholder="Insert number" id="totalLoan" class="input-group-text" >-->
+                    </div>
+                </div>
+            </div>
+            <br>
+
+        </div>
+
+        <div id="newRow3">
+            <hr style="width: 35vw; margin: auto">
+            <div class="row ">
+                <div class="col-sm-7 col-md-7 col-lg-7 col-12 "><br>
+                    <p class="display-6 custom">Insert first part of loan by months <i><u>or</u></i> by years
+                        <i><u>or</u></i> by both</p>
+                </div>
+                <div class="col-sm-5 col-md-5 col-lg-5 col-12 text-end  "><br>
+                    <input type="number" min="0" placeholder="Number of years" class="input-group-text C" id="years3">
+                    <input type="number" min="0" placeholder="Number of months" class="input-group-text C" id="months3">
+                </div>
+                <br>
+            </div>
+
+            <div class="row  ">
+                <div class="col-sm-7 col-md-7 col-lg-9 col-12"><br>
+                    <p class="display-6 custom">Interest percentage</p>
+                </div>
+
+                <div class="col-sm-5 col-md-5 col-lg-3 col-12 text-end"><br>
+                    <div class="input-group mb-3 text-end">
+                        <input type="text" class="form-control" id="interest3"
+                               aria-label="Amount (to the nearest dollar)"
+                               placeholder="%"
+                               max="10">
+                        <span class="input-group-text euro" style="background-color: lightgray">%</span>
+                        <!--            <input type="number" min="0" placeholder="Insert number" id="totalLoan" class="input-group-text" >-->
+                    </div>
+                </div>
+            </div>
+            <br>
+
+        </div>
+
+        <div id="newRow4">
+            <hr style="width: 35vw; margin: auto">
+            <div class="row ">
+                <div class="col-sm-7 col-md-7 col-lg-7 col-12 "><br>
+                    <p class="display-6 custom">Insert first part of loan by months <i><u>or</u></i> by years
+                        <i><u>or</u></i> by both</p>
+                </div>
+                <div class="col-sm-5 col-md-5 col-lg-5 col-12 text-end  "><br>
+                    <input type="number" min="0" placeholder="Number of years" class="input-group-text C" id="years4">
+                    <input type="number" min="0" placeholder="Number of months" class="input-group-text C" id="months4">
+                </div>
+                <br>
+            </div>
+
+            <div class="row  ">
+                <div class="col-sm-7 col-md-7 col-lg-9 col-12"><br>
+                    <p class="display-6 custom">Interest percentage</p>
+                </div>
+
+                <div class="col-sm-5 col-md-5 col-lg-3 col-12 text-end"><br>
+                    <div class="input-group mb-3 text-end">
+                        <input type="text" class="form-control" id="interest4"
+                               aria-label="Amount (to the nearest dollar)"
+                               placeholder="%"
+                               max="10">
+                        <span class="input-group-text euro" style="background-color: lightgray">%</span>
+                        <!--            <input type="number" min="0" placeholder="Insert number" id="totalLoan" class="input-group-text" >-->
+                    </div>
+                </div>
+            </div>
+            <br>
+
+        </div>
+
+        <div id="newRow5">
+            <hr style="width: 35vw; margin: auto">
+            <div class="row ">
+                <div class="col-sm-7 col-md-7 col-lg-7 col-12 "><br>
+                    <p class="display-6 custom">Insert first part of loan by months <i><u>or</u></i> by years
+                        <i><u>or</u></i> by both</p>
+                </div>
+                <div class="col-sm-5 col-md-5 col-lg-5 col-12 text-end  "><br>
+                    <input type="number" min="0" placeholder="Number of years" class="input-group-text C" id="years5">
+                    <input type="number" min="0" placeholder="Number of months" class="input-group-text C" id="months5">
+                </div>
+                <br>
+            </div>
+
+            <div class="row  ">
+                <div class="col-sm-7 col-md-7 col-lg-9 col-12"><br>
+                    <p class="display-6 custom">Interest percentage</p>
+                </div>
+
+                <div class="col-sm-5 col-md-5 col-lg-3 col-12 text-end"><br>
+                    <div class="input-group mb-3 text-end">
+                        <input type="text" class="form-control" id="interest5"
+                               aria-label="Amount (to the nearest dollar)"
+                               placeholder="%"
+                               max="10">
+                        <span class="input-group-text euro" style="background-color: lightgray">%</span>
+                        <!--            <input type="number" min="0" placeholder="Insert number" id="totalLoan" class="input-group-text" >-->
+                    </div>
+                </div>
+            </div>
+            <br>
+
+        </div>
+
+
+        <div class="text-end">
+            <button class="btn btn-outline-secondary text-center" id="addAnother">Add another custom installment
+                period
+            </button>
+        </div>
+
     </div>
     <br>
     <hr style="width: 35vw; margin: auto">
