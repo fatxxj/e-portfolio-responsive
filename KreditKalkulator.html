@@ -33,13 +33,15 @@
                     $("#customKamata").show()
                     $("#fixedInteres").hide()
 
-
+                    $("span#switchCheck").text("Fixed interest percentage")
+                    $("#yearMonthInputs").hide()
                 } else {
                     // do 'false' stuff, like disabling a 'Continue' button
                     //console.log("fixedInteres")
                     $("#fixedInteres").show()
                     $("#customKamata").hide()
-
+                    $("#yearMonthInputs").show()
+                    $("span#switchCheck").text("Variable interest percentage")
 
                 }
             })
@@ -52,10 +54,12 @@
                     $("#customKamata").show()
                     $("#fixedInteres").hide()
                     $("span#switchCheck").text("Fixed interest percentage")
+                    $("#yearMonthInputs").hide()
                 } else {
                     // do 'false' stuff, like disabling a 'Continue' button
                     // console.log("fixedInteres")
                     $("#fixedInteres").show()
+                    $("#yearMonthInputs").show()
                     $("span#switchCheck").text("Variable interest percentage")
                 }
             })
@@ -204,15 +208,8 @@
                 }
 
 
-                if ($("#totalLoan").val() === "") {
-                    alert("Loan amount is required")
 
-                } else
-                    flag++;
 
-                if ($("#months").val() == "" && $("#years").val() === "")
-                    alert(" Number of installments either by month either by year is required")
-                else flag++;
 
 
                 variableInteres = $("#flexSwitchCheckDefault").is(':checked');
@@ -220,15 +217,36 @@
                     if ($("#interest").val() === "")
                         alert("Interest is required")
                     else flag++;
+
+                    if ($("#months").val() == "" && $("#years").val() === "")
+                        alert(" Number of installments either by month either by year is required")
+                    else flag++;
+                    if ($("#totalLoan").val() === "") {
+                        alert("Loan amount is required")
+
+                    } else
+                        flag++;
+
                 } else {
+                    if ($("#totalLoan").val() === "") {
+                        alert("Loan amount is required")
+
+                    } else
+                        flag++;
 
                     if ($("#interest1").val() === "")
                         alert("Custom interest amount is required")
                     else flag++;
                     if ($("#years1").val() === "" && $("#months1").val() === "")
                         alert("At least one of the custom fields for year and month is required")
+                    else
+                        flag++;
 
                 }
+
+                console.log(flag)
+                console.log(flag)
+                console.log(flag)
 
 
                 if (flag == 3) {
@@ -298,12 +316,30 @@
 
                 console.log(yearAndMonth)
 
-
+            if(variableInteres===false)
+            {
                 withInterest = $("#TotalreturnAmtWithInterest").val((parseInt($("#totalLoan").val()) + parseInt($("#totalLoan").val()) * interest).toFixed(2) + " Euro")
 
                 $("#returnAmt").val(totalRata.toFixed(2) + " Euro")
 
                 $("#totalInteres").val((parseInt($("#TotalreturnAmtWithInterest").val()) - parseInt($("#totalLoan").val())).toFixed(2) + " Euro")
+
+            }
+            if(variableInteres===true)
+            {
+
+                interesFromAllCustom = customInteres1+customInteres2+customInteres3+customInteres4+customInteres5
+                //yearsFromAllCustom = customYear1+customYear2+customYear3+customYear4+customYear5;
+                monthsFromAllCustom = ((customYear1+customYear2+customYear3+customYear4+customYear5)*12)+customMonth1+customMonth2+customMonth3+customMonth4+customMonth5
+
+                console.log(monthsFromAllCustom)
+                $("#totalInteres").val($("#totalLoan").val()* parseFloat(interesFromAllCustom).toFixed(2)+" Euro");
+                withCustomInterestReturn = $("#totalLoan").val() * interesFromAllCustom
+                $("#TotalreturnAmtWithInterest").val(parseInt($("#totalLoan").val()) + parseFloat(withCustomInterestReturn)+" Euro")
+                TotalreturnAmtWithInterest=parseInt($("#totalLoan").val()) + parseFloat(withCustomInterestReturn)
+                console.log(TotalreturnAmtWithInterest)
+                $("#returnAmt").val((TotalreturnAmtWithInterest/monthsFromAllCustom).toFixed(2)+" Euro")
+            }
 
                 $("#calculateAgain").click(function () {
                     location.reload()
@@ -317,94 +353,7 @@
                 }
             })
 
-            // $('#interest').on('input', function () {
-            //
-            //     if ($("#interest").val() !== "") {
-            //         $("#years1, #months1, #interest1 ").attr('disabled', 'disabled');
-            //         isDisabledFinalExam = 1 //gets disabled when points entered for first exam
-            //         console.log(isDisabledFinalExam)
-            //         $("#years1, #months1 , #interest1").css("background-color", "lightgray")
-            //
-            //
-            //     }
-            //
-            //     if ($("#interest").val() === "") {
-            //         $("#years1, #months1, #interest1  ").attr('enabled', 'enabled');
-            //         isDisabledFinalExam = 0 //undo disable when first exam is empty
-            //         console.log(isDisabledFinalExam)
-            //         $("#years1, #months1 , #interest1 ").css("background-color", "white")
-            //
-            //
-            //     }
-            //
-            // });
 
-
-            // $('#years1, #months1, #interest1').on('input', function () {
-            //
-            //     if ($("#years1, #months1, #interest1").val() !== "") {
-            //         $("#interest").attr('disabled', 'disabled');
-            //         isDisabledFinalExam = 1 //gets disabled when points entered for first exam
-            //         console.log(isDisabledFinalExam)
-            //         $("#interest").css("background-color", "lightgray")
-            //
-            //
-            //     }
-            //
-            //     if ($("#years1, #months1, #interest1").val() === "") {
-            //         $("#interest").attr('enabled', 'enabled');
-            //         isDisabledFinalExam = 0 //undo disable when first exam is empty
-            //         console.log(isDisabledFinalExam)
-            //         $("#interest ").css("background-color", "white")
-            //
-            //
-            //     }
-            //
-            // });
-            //
-            // $('#months1').on('input', function () {
-            //
-            //     if ($(" #months1").val() !== "") {
-            //         $("#interest").attr('disabled', 'disabled');
-            //         isDisabledFinalExam = 1 //gets disabled when points entered for first exam
-            //         console.log(isDisabledFinalExam)
-            //         $("#interest").css("background-color", "lightgray")
-            //
-            //
-            //     }
-            //
-            //     if ($("#months1").val() === "") {
-            //         $("#interest").attr('enabled', 'enabled');
-            //         isDisabledFinalExam = 0 //undo disable when first exam is empty
-            //         console.log(isDisabledFinalExam)
-            //         $("#interest ").css("background-color", "white")
-            //
-            //
-            //     }
-            //
-            // });
-            //
-            // $(' #interest1').on('input', function () {
-            //
-            //     if ($(" #interest1").val() !== "") {
-            //         $("#interest").attr('disabled', 'disabled');
-            //         isDisabledFinalExam = 1 //gets disabled when points entered for first exam
-            //         console.log(isDisabledFinalExam)
-            //         $("#interest").css("background-color", "lightgray")
-            //
-            //
-            //     }
-            //
-            //     if ($(" #interest1").val() === "") {
-            //         $("#interest").attr('enabled', 'enabled');
-            //         isDisabledFinalExam = 0 //undo disable when first exam is empty
-            //         console.log(isDisabledFinalExam)
-            //         $("#interest ").css("background-color", "white")
-            //
-            //
-            //     }
-            //
-            // });
 
 
         })
@@ -629,6 +578,11 @@
         </div>
     </div>
     <hr style="width: 35vw; margin: auto">
+    <div class="form-check form-switch " style="margin: auto">
+        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+        <label class="form-check-label" for="flexSwitchCheckDefault"><span
+                id="switchCheck"> Varible interes percentage</span></label>
+    </div>
     <div class="row " id="yearMonthInputs">
         <div class="col-sm-7 col-md-7 col-lg-7 col-12 "><br>
             <p class="display-6 custom">Insert total number of installments by months <i><u>or</u></i> by years</p>
@@ -644,11 +598,7 @@
     <br>
     <hr>
     <br>
-    <div class="form-check form-switch " style="margin: auto">
-        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-        <label class="form-check-label" for="flexSwitchCheckDefault"><span
-                id="switchCheck"> Varible interes percentage</span></label>
-    </div>
+
     <div id="fixedInteres">
 
         <div class="row text-center">
