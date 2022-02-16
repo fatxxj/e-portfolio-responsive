@@ -63,17 +63,43 @@
 
             //calculations for both scenarios
             var i = 2;
+
+
             $("#addAnother").click(function () {
-                $("#newRow"+ i).show();
+                $("#newRow" + i).show();
+
                 i++;
-                console.log(i)
-                if(i===5)
-                {
-                    $("#addAnother").attr('disabled','disabled')
+
+                //console.log(i)
+                if (i === 5) {
+                    $("#addAnother").attr('disabled', 'disabled')
                 }
             })
 
 
+            $("#removeField2").click(function () {
+                // console.log(i)
+                $("#newRow2").remove()
+
+            })
+
+            $("#removeField3").click(function () {
+                // console.log(i)
+                $("#newRow3").remove()
+
+            })
+
+            $("#removeField4").click(function () {
+                // console.log(i)
+                $("#newRow4").remove()
+
+            })
+
+            $("#removeField5").click(function () {
+                // console.log(i)
+                $("#newRow5").remove()
+
+            })
 
 
             $("#calculate").click(function () {
@@ -84,15 +110,71 @@
 
                     customYear1 = parseInt($("#years1").val())
                     customMonth1 = parseInt($("#months1").val());
-
                     customInteres1 = parseFloat($("#interest1").val()) / 100
+
+                    customYear2 = parseInt($("#years2").val())
+                    customMonth2=parseInt($("#months2").val())
+                    customInteres2=parseFloat($("#interest2").val())/100
+
+                    customYear3 = parseInt($("#years3").val())
+                    customMonth3=parseInt($("#months3").val())
+                    customInteres3=parseFloat($("#interest3").val())/100
+
+                    customYear4 = parseInt($("#years4").val())
+                    customMonth4=parseInt($("#months4").val())
+                    customInteres4=parseFloat($("#interest4").val())/100
+
+                    customYear5 = parseInt($("#years5").val())
+                    customMonth5=parseInt($("#months5").val())
+                    customInteres5=parseFloat($("#interest5").val())/100
+
                     console.log(customMonth1)
                     console.log(customYear1)
                     console.log(customInteres1)
 
+                    if($("#years1").val()==="")
+                        customYear1=0;
+                    if($("#months1").val()==="")
+                        customMonth1=0
+                    if($("#interest1").val()==="")
+                        customInteres1=0
+
+
+                    if($("#years2").val()==="")
+                        customYear2=0;
+                    if($("#months2").val()==="")
+                        customMonth2=0
+                    if($("#interest2").val()==="")
+                        customInteres2=0
+
+
+                    if($("#years3").val()==="")
+                        customYear3=0;
+                    if($("#months3").val()==="")
+                        customMonth3=0
+                    if($("#interest3").val()==="")
+                        customInteres3=0
+
+                    if($("#years4").val()==="")
+                        customYear4=0;
+                    if($("#months4").val()==="")
+                        customMonth4=0
+                    if($("#interest4").val()==="")
+                        customInteres4=0
+
+
+                    if($("#years5").val()==="")
+                        customYear5=0;
+                    if($("#months5").val()==="")
+                        customMonth5=0
+                    if($("#interest5").val()==="")
+                        customInteres5=0
+
+
 
                 } else { //fixed interes
                     // do 'false' stuff, like disabling a 'Continue' button
+                    //console.log("fixedInteres")
                     //console.log("fixedInteres")
 
 
@@ -362,6 +444,14 @@
 
             }
 
+            #addAnother {
+                margin-top: 2.5vw;
+                height: 16vw;
+                width: 70vw;
+                text-align: center;
+                justify-content: center;
+            }
+
             .input-group-text.euro {
                 width: 13vw;
                 height: 15vw;
@@ -414,6 +504,10 @@
             /*}*/
             .d-flex.C {
                 height: 5vw;
+            }
+
+            #addAnother {
+                width: 25vw;
             }
         }
 
@@ -591,9 +685,10 @@
                 </div>
             </div>
         </div>
+
         <br>
 
-        <div id="newRow2">
+        <div id="newRow2"><br>
             <hr style="width: 35vw; margin: auto">
             <div class="row ">
                 <div class="col-sm-7 col-md-7 col-lg-7 col-12 "><br>
@@ -624,10 +719,13 @@
                 </div>
             </div>
             <br>
-
+            <button class="btn btn-outline-secondary " id="removeField2">Remove custom installment
+                period
+            </button>
+            <br>
         </div>
 
-        <div id="newRow3">
+        <div id="newRow3"><br>
             <hr style="width: 35vw; margin: auto">
             <div class="row ">
                 <div class="col-sm-7 col-md-7 col-lg-7 col-12 "><br>
@@ -658,10 +756,13 @@
                 </div>
             </div>
             <br>
-
+            <button class="btn btn-outline-secondary " id="removeField3">Remove custom installment
+                period
+            </button>
+            <br>
         </div>
 
-        <div id="newRow4">
+        <div id="newRow4"><br>
             <hr style="width: 35vw; margin: auto">
             <div class="row ">
                 <div class="col-sm-7 col-md-7 col-lg-7 col-12 "><br>
@@ -692,10 +793,13 @@
                 </div>
             </div>
             <br>
-
+            <button class="btn btn-outline-secondary " id="removeField4">Remove custom installment
+                period
+            </button>
+            <br>
         </div>
 
-        <div id="newRow5">
+        <div id="newRow5"><br>
             <hr style="width: 35vw; margin: auto">
             <div class="row ">
                 <div class="col-sm-7 col-md-7 col-lg-7 col-12 "><br>
@@ -724,17 +828,28 @@
                         <!--            <input type="number" min="0" placeholder="Insert number" id="totalLoan" class="input-group-text" >-->
                     </div>
                 </div>
+
             </div>
+            <br>
+            <button class="btn btn-outline-secondary " id="removeField5">Remove custom installment
+                period
+            </button>
             <br>
 
         </div>
+<br><br>
+        <div class="row d-flex justify-content-center">
 
+            <div class="col-sm-6 col-md-6 col-lg-6 col-8 d-flex  justify-content-center"><br>
+                <button class="btn btn-outline-secondary " id="addAnother">Add custom installment
+                    period
+                </button>
+                <br><br>
 
-        <div class="text-end">
-            <button class="btn btn-outline-secondary text-center" id="addAnother">Add another custom installment
-                period
-            </button>
+            </div>
+
         </div>
+
 
     </div>
     <br>
@@ -794,10 +909,8 @@
 
             </div>
 
-
         </div>
         <br><br>
-
 
     </div>
 
