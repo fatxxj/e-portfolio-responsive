@@ -107,8 +107,9 @@
 
 
             $("#calculate").click(function () {
-
-
+                    $("#addAnother").hide()
+                $("#calculate").hide()
+$("#removableHR").hide()
                 variableInteres = $("#flexSwitchCheckDefault").is(':checked');
                 if (variableInteres === true) {
 
@@ -577,7 +578,7 @@
             </div>
         </div>
     </div>
-    <hr style="width: 35vw; margin: auto">
+    <hr style="width: 35vw; margin: auto" >
     <div class="form-check form-switch " style="margin: auto">
         <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
         <label class="form-check-label" for="flexSwitchCheckDefault"><span
@@ -826,7 +827,7 @@
 
     </div>
     <br>
-    <hr style="width: 35vw; margin: auto">
+    <hr style="width: 35vw; margin: auto" id="removableHR">
 
 
     <div class="row text-center">
