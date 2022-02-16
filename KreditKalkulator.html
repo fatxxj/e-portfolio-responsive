@@ -108,67 +108,90 @@
                 variableInteres = $("#flexSwitchCheckDefault").is(':checked');
                 if (variableInteres === true) {
 
-                    customYear1 = parseInt($("#years1").val())
-                    customMonth1 = parseInt($("#months1").val());
-                    customInteres1 = parseFloat($("#interest1").val()) / 100
 
-                    customYear2 = parseInt($("#years2").val())
-                    customMonth2=parseInt($("#months2").val())
-                    customInteres2=parseFloat($("#interest2").val())/100
-
-                    customYear3 = parseInt($("#years3").val())
-                    customMonth3=parseInt($("#months3").val())
-                    customInteres3=parseFloat($("#interest3").val())/100
-
-                    customYear4 = parseInt($("#years4").val())
-                    customMonth4=parseInt($("#months4").val())
-                    customInteres4=parseFloat($("#interest4").val())/100
-
-                    customYear5 = parseInt($("#years5").val())
-                    customMonth5=parseInt($("#months5").val())
-                    customInteres5=parseFloat($("#interest5").val())/100
-
-                    console.log(customMonth1)
-                    console.log(customYear1)
-                    console.log(customInteres1)
-
+                    //if he added custom installment field newRow1
                     if($("#years1").val()==="")
                         customYear1=0;
+                    else
+                        customYear1 = parseInt($("#years1").val())
+
                     if($("#months1").val()==="")
                         customMonth1=0
+                    else
+                        customMonth1 = parseInt($("#months1").val());
+
                     if($("#interest1").val()==="")
                         customInteres1=0
+                    else
+                        customInteres1 = parseFloat($("#interest1").val()) / 100
 
 
+                    //if he added custom installment field newRow2
                     if($("#years2").val()==="")
                         customYear2=0;
+                    else
+                        customYear2 = parseInt($("#years2").val())
+
                     if($("#months2").val()==="")
                         customMonth2=0
+                    else
+                        customMonth2=parseInt($("#months2").val())
+
                     if($("#interest2").val()==="")
                         customInteres2=0
+                    else
+                        customInteres2=parseFloat($("#interest2").val())/100
 
 
+                    //if he added custom installment field newRow3
                     if($("#years3").val()==="")
                         customYear3=0;
+                    else
+                        customYear3 = parseInt($("#years3").val())
                     if($("#months3").val()==="")
                         customMonth3=0
+                    else
+                        customMonth3=parseInt($("#months3").val())
                     if($("#interest3").val()==="")
                         customInteres3=0
+                    else
+                        customInteres3=parseFloat($("#interest3").val())/100
 
+
+                    //if he added custom installment field newRow4
                     if($("#years4").val()==="")
                         customYear4=0;
+                    else
+                        customYear4 = parseInt($("#years4").val())
+
                     if($("#months4").val()==="")
                         customMonth4=0
+                    else
+                        customMonth4=parseInt($("#months4").val())
+
                     if($("#interest4").val()==="")
                         customInteres4=0
+                    else
+                        customInteres4=parseFloat($("#interest4").val())/100
 
+
+                    //if he added custom installment field newRow5
 
                     if($("#years5").val()==="")
                         customYear5=0;
+                    else
+                        customYear5 = parseInt($("#years5").val())
+
                     if($("#months5").val()==="")
                         customMonth5=0
+                    else
+                        customMonth5=parseInt($("#months5").val())
+
                     if($("#interest5").val()==="")
                         customInteres5=0
+                    else
+                        customInteres5=parseFloat($("#interest5").val())/100
+
 
 
 
