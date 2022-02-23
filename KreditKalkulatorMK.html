@@ -316,14 +316,14 @@
 
                 if (variableInteres === true) {  // nese e ka klilku butonin per variable interes i ndrojm formulat per variable interes
 
-                    //interesFromAllCustom = (customInteres1 + customInteres2 + customInteres3 + customInteres4 + customInteres5); // kamata e krejt fieldsave e mbledhet e pjestume me 100
-                    //  yearConvertedToMonthsOnCustomFields = (customYear1 + customYear2 + customYear3 + customYear4 + customYear5) * 12 // konvertohen vjetet ne muj
-                    // monthsFromAllCustom = yearConvertedToMonthsOnCustomFields + customMonth1 + customMonth2 + customMonth3 + customMonth4 + customMonth5 // mblidhen mujet plus konvertimi i vjetve ne muj
+                    interesFromAllCustom = (customInteres1 + customInteres2 + customInteres3 + customInteres4 + customInteres5); // kamata e krejt fieldsave e mbledhet e pjestume me 100
+                    yearConvertedToMonthsOnCustomFields = (customYear1 + customYear2 + customYear3 + customYear4 + customYear5) * 12 // konvertohen vjetet ne muj
+                    monthsFromAllCustom = yearConvertedToMonthsOnCustomFields + customMonth1 + customMonth2 + customMonth3 + customMonth4 + customMonth5 // mblidhen mujet plus konvertimi i vjetve ne muj
 
-                    // monthlyInteres = (parseFloat(interesFromAllCustom) / monthsFromAllCustom); // kamata e pjestume per mujet
+                   monthlyInteres = (parseFloat(interesFromAllCustom) / monthsFromAllCustom); // kamata e pjestume per mujet
 
-                    //   totalInteres = 0;
-                    // pagesaPerRatPaKamat = ($("#totalLoan").val() / monthsFromAllCustom)
+                       totalInteres = 0;
+                    pagesaPerRatPaKamat = ($("#totalLoan").val() / monthsFromAllCustom)
 
                     // ========================================================================
 
@@ -366,6 +366,9 @@
 
             $("#gjuha").change(function () {
                 if ($(this).val() === '1') {
+                    window.open("KreditKalkulator.html", "_self")
+                }
+                if ($(this).val() === '2') {
                     window.open("KreditKalkulatorAL.html", "_self")
                 }
             })
@@ -562,9 +565,9 @@
             <label for="gjuha">Промена на јазик</label><br>
 
             <select name="gjuha" id="gjuha">
-                <option value="bosh">English</option>
-                <option id="shqip" value="1"> Shqip</option>
-                <option id="maqedonisht" value="2"> Македонски</option>
+                <option value="bosh">Македонски</option>
+                <option id="shqip" value="1"> English</option>
+                <option id="maqedonisht" value="2"> Shqip</option>
             </select>
         </div>
 
