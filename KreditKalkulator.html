@@ -343,8 +343,8 @@
 
 
                     var principal = parseFloat(amount);
-                    var calculatedInterest = parseFloat(interest)  / 12;
-                    var calculatedPayments = (parseFloat(years) * 12)+customMonth1+customMonth2+customMonth3+customMonth4+customMonth5;
+                    var calculatedInterest = parseFloat(interest) / 12;
+                    var calculatedPayments = (parseFloat(years) * 12) + customMonth1 + customMonth2 + customMonth3 + customMonth4 + customMonth5;
 
 
                     //Calculating the monthly payment
@@ -352,7 +352,7 @@
                     var monthly = (principal * x * calculatedInterest) / (x - 1);
                     var monthlyPayment = monthly.toFixed(2);
 
-                        //calculating the total interest
+                    //calculating the total interest
                     const totalInterest = (monthly * calculatedPayments - principal).toFixed(2);
 
                     //calculating the total payment
@@ -360,10 +360,32 @@
                     //==================================================
 
 
-
                     $("#totalInteres").val(totalInterest + " Euro");
                     $("#TotalreturnAmtWithInterest").val((totalPayment) + " Euro")
                     $("#monthlyReturnAmt").val((monthlyPayment) + " Euro")
+
+                    $("#generateTable").click(function ()
+                    {
+
+
+                        var content = "<table class='table table-striped'>    <thead>\n" +
+                            "    <tr>\n" +
+                            "      <th style='width: 1.2vw;' scope=\"col\">Payment no.</th>\n" +
+                            "      <th scope=\"col\">Payment date</th>\n" +
+                            "      <th scope=\"col\">Payment</th>\n" +
+                            "      <th scope=\"col\">Principal</th>\n" +
+                            "      <th scope=\"col\">Interest</th>\n" +
+                            "      <th scope=\"col\">Total interest</th>\n" +
+                            "      <th scope=\"col\">Balance</th>\n" +
+                            "    </tr>\n" +
+                            "  </thead> "
+                        for(i=1; i<=monthsFromAllCustom; i++){ //krijojm reshta aq sa kemi muaj
+                            content += '<tr><td >' + '<b>'+  i+' </b>'+ '</td><td>' + "Month" + i + '</td> <td>' + "Payment" + i + '</td> <td>' + "Principal" + i + '</td> <td>' + "Interest" + i + '</td> <td>' + "Total Interest" + i + '</td> <td>' + "Balance" + i + '</td></tr>';
+                        }
+                        content += "</table>"
+
+                        $('#here_table').append(content);
+                    })
 
 
                 }
@@ -385,6 +407,8 @@
 
 
         })
+
+
 
 
     </script>
@@ -840,17 +864,17 @@
 
         </div>
         <br><br>
-        <div class="row d-flex justify-content-center">
+        <!--        <div class="row d-flex justify-content-center">-->
 
-            <div class="col-sm-6 col-md-6 col-lg-6 col-8 d-flex  justify-content-center"><br>
-                <button class="btn btn-outline-secondary " id="addAnother">Add custom installment
-                    period
-                </button>
-                <br><br>
+        <!--            <div class="col-sm-6 col-md-6 col-lg-6 col-8 d-flex  justify-content-center"><br>-->
+        <!--                <button class="btn btn-outline-secondary " id="addAnother">Add custom installment-->
+        <!--                    period-->
+        <!--                </button>-->
+        <!--                <br><br>-->
 
-            </div>
+        <!--            </div>-->
 
-        </div>
+        <!--        </div>-->
 
 
     </div>
@@ -897,6 +921,11 @@
             </div>
         </div>
         <br><br>
+        <div class="row">
+            <div id="here_table">
+
+            </div>
+        </div>
         <div class="row d-flex justify-content-center">
 
             <div class="col-sm-6 col-md-6 col-lg-6 col-12 d-flex justify-content-center"><br>
@@ -904,13 +933,22 @@
                 </button>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-6 col-12 d-flex  justify-content-center"><br>
+                <button class="btn btn-outline-secondary " id="generateTable">Generate Loan Amortization table
+                </button>
+                <br><br>
+
+            </div>
+
+
+        </div>  <br><br>
+        <div class="row d-flex justify-content-center">
+            <div class="col-sm-6 col-md-6 col-lg-6 col-12 d-flex  justify-content-center"><br>
                 <button onclick="window.print()" class="btn btn-outline-secondary " id="printbutton1">Print
                     report
                 </button>
                 <br><br>
 
             </div>
-
         </div>
         <br><br>
 
