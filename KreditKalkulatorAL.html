@@ -114,7 +114,6 @@
                 $("#months5").val(0);
                 $("#interest5").val(0)
             })
-            })
 
 
             $("#calculate").click(function () {
@@ -328,13 +327,13 @@
                 if (variableInteres === true) {  // nese e ka klilku butonin per variable interes i ndrojm formulat per variable interes
 
                     interesFromAllCustom = (customInteres1 + customInteres2 + customInteres3 + customInteres4 + customInteres5); // kamata e krejt fieldsave e mbledhet e pjestume me 100
-                      yearConvertedToMonthsOnCustomFields = (customYear1 + customYear2 + customYear3 + customYear4 + customYear5) * 12 // konvertohen vjetet ne muj
-                     monthsFromAllCustom = yearConvertedToMonthsOnCustomFields + customMonth1 + customMonth2 + customMonth3 + customMonth4 + customMonth5 // mblidhen mujet plus konvertimi i vjetve ne muj
+                    yearConvertedToMonthsOnCustomFields = (customYear1 + customYear2 + customYear3 + customYear4 + customYear5) * 12 // konvertohen vjetet ne muj
+                    monthsFromAllCustom = yearConvertedToMonthsOnCustomFields + customMonth1 + customMonth2 + customMonth3 + customMonth4 + customMonth5 // mblidhen mujet plus konvertimi i vjetve ne muj
 
-                     monthlyInteres = (parseFloat(interesFromAllCustom) / monthsFromAllCustom); // kamata e pjestume per mujet
+                    monthlyInteres = (parseFloat(interesFromAllCustom) / monthsFromAllCustom); // kamata e pjestume per mujet
 
-                       totalInteres = 0;
-                     pagesaPerRatPaKamat = ($("#totalLoan").val() / monthsFromAllCustom)
+                    totalInteres = 0;
+                    pagesaPerRatPaKamat = ($("#totalLoan").val() / monthsFromAllCustom)
 
                     // ========================================================================
 
@@ -344,8 +343,8 @@
 
 
                     var principal = parseFloat(amount);
-                    var calculatedInterest = parseFloat(interest)  / 12;
-                    var calculatedPayments = (parseFloat(years) * 12)+customMonth1+customMonth2+customMonth3+customMonth4+customMonth5;
+                    var calculatedInterest = parseFloat(interest) / 12;
+                    var calculatedPayments = (parseFloat(years) * 12) + customMonth1 + customMonth2 + customMonth3 + customMonth4 + customMonth5;
 
 
                     //Calculating the monthly payment
@@ -361,7 +360,6 @@
                     //==================================================
 
 
-
                     $("#totalInteres").val(totalInterest + " Euro");
                     $("#TotalreturnAmtWithInterest").val((totalPayment) + " Euro")
                     $("#monthlyReturnAmt").val((monthlyPayment) + " Euro")
@@ -375,6 +373,7 @@
                 })
             })
 
+
             $("#gjuha").change(function () {
                 if ($(this).val() === '1') {
                     window.open("KreditKalkulator.html", "_self")
@@ -383,10 +382,7 @@
                     window.open("KreditKalkulatorMK.html", "_self")
                 }
             })
-
-
         })
-
 
     </script>
     <style>
@@ -674,7 +670,8 @@
 
         <div class="row  ">
             <div class="col-sm-7 col-md-7 col-lg-9 col-12"><br>
-                <p class="display-6 custom">Sasia e interesit bankat në vlerë përqindjeje për periudhën e lartëpërmendur</p>
+                <p class="display-6 custom">Sasia e interesit bankat në vlerë përqindjeje për periudhën e
+                    lartëpërmendur</p>
             </div>
 
             <div class="col-sm-5 col-md-5 col-lg-3 col-12 text-end"><br>
@@ -697,15 +694,18 @@
                     <p class="display-6 custom">Fusni numrin e ratave mujore <i><u>ose</u></i> kohëzgjatjen vjetore </p>
                 </div>
                 <div class="col-sm-5 col-md-5 col-lg-5 col-12 text-end  "><br>
-                    <input type="number" min="0" placeholder="Kohëzgjatja në vite" class="input-group-text C" id="years2">
-                    <input type="number" min="0" placeholder="Kohëzgjatja në muaj" class="input-group-text C" id="months2">
+                    <input type="number" min="0" placeholder="Kohëzgjatja në vite" class="input-group-text C"
+                           id="years2">
+                    <input type="number" min="0" placeholder="Kohëzgjatja në muaj" class="input-group-text C"
+                           id="months2">
                 </div>
                 <br>
             </div>
 
             <div class="row  ">
                 <div class="col-sm-7 col-md-7 col-lg-9 col-12"><br>
-                    <p class="display-6 custom">Sasia e interesit bankat në vlerë përqindjeje për periudhën e lartëpërmendur</p>
+                    <p class="display-6 custom">Sasia e interesit bankat në vlerë përqindjeje për periudhën e
+                        lartëpërmendur</p>
                 </div>
 
                 <div class="col-sm-5 col-md-5 col-lg-3 col-12 text-end"><br>
@@ -732,15 +732,18 @@
                     <p class="display-6 custom">Fusni numrin e ratave mujore <i><u>ose</u></i> kohëzgjatjen vjetore</p>
                 </div>
                 <div class="col-sm-5 col-md-5 col-lg-5 col-12 text-end  "><br>
-                    <input type="number" min="0" placeholder="Kohëzgjatja në vite" class="input-group-text C" id="years3">
-                    <input type="number" min="0" placeholder="Kohëzgjatja në muaj" class="input-group-text C" id="months3">
+                    <input type="number" min="0" placeholder="Kohëzgjatja në vite" class="input-group-text C"
+                           id="years3">
+                    <input type="number" min="0" placeholder="Kohëzgjatja në muaj" class="input-group-text C"
+                           id="months3">
                 </div>
                 <br>
             </div>
 
             <div class="row  ">
                 <div class="col-sm-7 col-md-7 col-lg-9 col-12"><br>
-                    <p class="display-6 custom">Sasia e interesit bankat në vlerë përqindjeje për periudhën e lartëpërmendur</p>
+                    <p class="display-6 custom">Sasia e interesit bankat në vlerë përqindjeje për periudhën e
+                        lartëpërmendur</p>
                 </div>
 
                 <div class="col-sm-5 col-md-5 col-lg-3 col-12 text-end"><br>
@@ -767,15 +770,18 @@
                     <p class="display-6 custom">Fusni numrin e ratave mujore <i><u>ose</u></i> kohëzgjatjen vjetore</p>
                 </div>
                 <div class="col-sm-5 col-md-5 col-lg-5 col-12 text-end  "><br>
-                    <input type="number" min="0" placeholder="Kohëzgjatja në vite" class="input-group-text C" id="years4">
-                    <input type="number" min="0" placeholder="Kohëzgjatja në muaj" class="input-group-text C" id="months4">
+                    <input type="number" min="0" placeholder="Kohëzgjatja në vite" class="input-group-text C"
+                           id="years4">
+                    <input type="number" min="0" placeholder="Kohëzgjatja në muaj" class="input-group-text C"
+                           id="months4">
                 </div>
                 <br>
             </div>
 
             <div class="row  ">
                 <div class="col-sm-7 col-md-7 col-lg-9 col-12"><br>
-                    <p class="display-6 custom">Sasia e interesit bankat në vlerë përqindjeje për periudhën e lartëpërmendur</p>
+                    <p class="display-6 custom">Sasia e interesit bankat në vlerë përqindjeje për periudhën e
+                        lartëpërmendur</p>
                 </div>
 
                 <div class="col-sm-5 col-md-5 col-lg-3 col-12 text-end"><br>
@@ -802,15 +808,18 @@
                     <p class="display-6 custom">Fusni numrin e ratave mujore <i><u>ose</u></i> kohëzgjatjen vjetore</p>
                 </div>
                 <div class="col-sm-5 col-md-5 col-lg-5 col-12 text-end  "><br>
-                    <input type="number" min="0" placeholder="Kohëzgjatja në vite" class="input-group-text C" id="years5">
-                    <input type="number" min="0" placeholder="Kohëzgjatja në muaj" class="input-group-text C" id="months5">
+                    <input type="number" min="0" placeholder="Kohëzgjatja në vite" class="input-group-text C"
+                           id="years5">
+                    <input type="number" min="0" placeholder="Kohëzgjatja në muaj" class="input-group-text C"
+                           id="months5">
                 </div>
                 <br>
             </div>
 
             <div class="row  ">
                 <div class="col-sm-7 col-md-7 col-lg-9 col-12"><br>
-                    <p class="display-6 custom">Sasia e interesit bankat në vlerë përqindjeje për periudhën e lartëpërmendur</p>
+                    <p class="display-6 custom">Sasia e interesit bankat në vlerë përqindjeje për periudhën e
+                        lartëpërmendur</p>
                 </div>
 
                 <div class="col-sm-5 col-md-5 col-lg-3 col-12 text-end"><br>
@@ -832,16 +841,16 @@
 
         </div>
         <br><br>
-<!--        <div class="row d-flex justify-content-center">-->
+        <!--        <div class="row d-flex justify-content-center">-->
 
-<!--            <div class="col-sm-6 col-md-6 col-lg-6 col-8 d-flex  justify-content-center"><br>-->
-<!--                <button class="btn btn-outline-secondary " id="addAnother">Shto periudhë të personalizuar-->
-<!--                </button>-->
-<!--                <br><br>-->
+        <!--            <div class="col-sm-6 col-md-6 col-lg-6 col-8 d-flex  justify-content-center"><br>-->
+        <!--                <button class="btn btn-outline-secondary " id="addAnother">Shto periudhë të personalizuar-->
+        <!--                </button>-->
+        <!--                <br><br>-->
 
-<!--            </div>-->
+        <!--            </div>-->
 
-<!--        </div>-->
+        <!--        </div>-->
 
 
     </div>
@@ -895,7 +904,8 @@
                 </button>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-6 col-12 d-flex  justify-content-center"><br>
-                <button onclick="window.print()" class="btn btn-outline-secondary " id="printbutton1">Printo raportin e gjeneruar
+                <button onclick="window.print()" class="btn btn-outline-secondary " id="printbutton1">Printo raportin e
+                    gjeneruar
                 </button>
                 <br><br>
 
