@@ -222,13 +222,65 @@
 
                     returnAmountWithInteres = parseFloat(totalLoan) + (parseFloat(totalLoan) * interest)
 
-                    $("#totalInteres").val((returnAmountWithInteres - parseFloat(totalLoan)) + " Euro") // input fieldi i par te rezulatit i fixed percentage
+                    $("#totalInteres").val((returnAmountWithInteres - parseFloat(totalLoan)).toFixed(2) + " Euro") // input fieldi i par te rezulatit i fixed percentage
 
-                    $("#TotalreturnAmtWithInterest").val(returnAmountWithInteres + " Euro") // input fieldi i dyt te return amount with fixed
+                    $("#TotalreturnAmtWithInterest").val(returnAmountWithInteres.toFixed(2) + " Euro") // input fieldi i dyt te return amount with fixed
 
-                    $("#monthlyReturnAmt").val(totalAmountRata + " Euro") // input fieldi i tret te return amount with fixed
+                    $("#monthlyReturnAmt").val(totalAmountRata.toFixed(2) + " Euro") // input fieldi i tret te return amount with fixed
+
+                    $("#printbutton1").hide();
+
+                    $("#generateTable").click(function () {
 
 
+                        var content = "<table class='table table-striped'>    <thead>\n" +
+                            "    <tr>\n" +
+                            "      <th style='width: 1.2vw;' scope=\"col\">Payment no.</th>\n" +
+
+                            "      <th scope=\"col\">Total payment</th>\n" +
+                            //  "      <th scope=\"col\">Principal</th>\n" +
+                            "      <th scope=\"col\">Interest</th>\n" +
+                            "      <th scope=\"col\">Total interest</th>\n" +
+                            "      <th scope=\"col\">Balance left</th>\n" +
+                            "    </tr>\n" +
+                            "  </thead> "
+
+                        var totalInterestTable = parseFloat("0");
+                        var balanceLeft = returnAmountWithInteres
+                        for (i = 1; i <= monthsFromAllCustom; i++) { //krijojm reshta aq sa kemi muaj
+                            // content += '<tr><td >' + '<b>'+  i+' </b>'+ '</td><td>' + "Month" + i + '</td> <td>' + monthlyPayment +"<i>&euro;</i>"+ '</td> <td>' + "Principal" + i + '</td> <td>' + "Interest" + i + '</td> <td>' + "Total Interest" + i + '</td> <td>' + "Balance" + i + '</td></tr>';
+                            content += "<tr>"
+
+
+                            totalInterestTable += parseFloat((returnAmountWithInteres - parseFloat(totalLoan)) / yearAndMonth)
+                            balanceLeft -= totalAmountRata
+                            parseFloat(totalInterestTable)
+
+                            content += "<td>" + '<b>' + i + '</b>' + "</td>"  // PAYMENT no.
+
+                            if (i === monthsFromAllCustom) {
+                                content += "<td>" + "<b>" + monthlyPayment + "<i> &euro; </i>" + "</b>" + "</td>" // INSTALLMENT amount.
+                                content += "<td>" + "<b>" + ((returnAmountWithInteres - parseFloat(totalLoan)) / yearAndMonth).toFixed(2) + "<i> &euro; </i>" + "</b>" + "</td>" // INSTALLMENT amount.
+                                content += "<td>" + "<b>" + totalInterestTable.toFixed(2) + "<i> &euro; </i>" + "</b>" + "</td>" // INSTALLMENT amount.
+                                content += "<td>" + "<b>" + balanceLeft.toFixed(2) + "<i> &euro; </i>" + "</b>" + "</td>" // INSTALLMENT amount.
+                            } else {
+                                content += "<td>" + monthlyPayment + "<i> &euro;</i>" + "</td>" // INSTALLMENT amount.
+                                content += "<td>" + ((returnAmountWithInteres - parseFloat(totalLoan)) / yearAndMonth).toFixed(2) + "<i> &euro;</i>" + "</td>" // INSTALLMENT amount.
+                                content += "<td>" + totalInterestTable.toFixed(2) + "<i> &euro;</i>" + "</td>" // INSTALLMENT amount.
+                                content += "<td>" + balanceLeft.toFixed(2) + "<i> &euro;</i>" + "</td>" // INSTALLMENT amount.
+                            }
+
+
+                            content += "</tr>";
+                        }
+                        content += "</table>"
+
+                        $('#here_table').append(content);
+
+                        $("#generateTable").hide();
+                        $("#printbutton1").show();
+
+                    })
                 }
 
 
@@ -371,7 +423,7 @@
                             "    <tr>\n" +
                             "      <th style='width: 1.2vw;' scope=\"col\">Payment no.</th>\n" +
 
-                            "      <th scope=\"col\">Payment</th>\n" +
+                            "      <th scope=\"col\">Total payment</th>\n" +
                             //  "      <th scope=\"col\">Principal</th>\n" +
                             "      <th scope=\"col\">Interest</th>\n" +
                             "      <th scope=\"col\">Total interest</th>\n" +
@@ -414,14 +466,13 @@
                             $("#generateTable").hide();
                             $("#printbutton1").show();
 
-
-
                     })
 
 
                     // $("#prin")
 
                 }
+
 
                 $("#calculateAgain").click(function () {
                     location.reload()
