@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Privacy Protection Information</title>
+  </head>
+  <body>
+    <h1>Privacy Protection Information</h1>
+    <p>This app uses location permissions to provide better service to its users.</p>
+    <p>Please note that the doctors listed in the app are not verified. Anyone can create an account as a doctor, and anyone can create an account as a user.</p>
+    <p>All users should not pay anything in the app, even if someone requests payment.</p>
+    <p>This app is currently in BETA version and serves as an illustration. If you are interested in using the app, please contact the developer for more information.</p>
+  </body>
+</html>
